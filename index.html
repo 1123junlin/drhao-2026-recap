@@ -250,6 +250,23 @@ footer{font-size:14px;color:var(--soft)}
 #lbPrev{left:max(10px,env(safe-area-inset-left,0px))}
 #lbNext{right:max(10px,env(safe-area-inset-right,0px))}
 #lbInfo{position:absolute;left:0;right:0;bottom:calc(10px + env(safe-area-inset-bottom,0px));text-align:center;font-size:14px;color:var(--soft);pointer-events:none}
+.solo{display:grid;gap:16px}
+.solo .zoom{margin:0}
+.next3{display:grid;gap:20px}
+.next3>*{min-width:0}
+.n-talk{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:clamp(24px,4vw,48px);align-items:center;border-color:var(--gold);box-shadow:0 0 40px rgba(224,162,53,.18)}
+.n-body{display:grid;gap:14px;justify-items:start}
+.n-talk h3{font-size:clamp(30px,4.4vw,46px);line-height:1.25}
+.n-big{display:flex;align-items:baseline;gap:8px}
+.n-big b{font:600 clamp(48px,7vw,72px)/1 var(--num);color:var(--glow);text-shadow:0 0 22px rgba(224,162,53,.45)}
+.n-big span{font-family:var(--serif);font-size:22px}
+.n-sub{color:var(--soft)}
+.n-summit{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) auto;gap:24px;align-items:center}
+.n-summit h3{font-size:clamp(24px,3vw,30px);margin-top:6px}
+.n-summit .n-facts{margin:0}
+@media(max-width:800px){.n-talk{grid-template-columns:1fr}.n-talk .zoom{max-width:420px;justify-self:center}.n-summit{grid-template-columns:1fr;justify-items:start}}
+.n-more{font-family:var(--serif);font-size:18px;color:var(--coat)}
+.motto{font:700 clamp(20px,3vw,26px)/1.5 var(--serif);letter-spacing:.12em;color:var(--glow)}
 </style>
 </head>
 <body>
@@ -391,7 +408,7 @@ AI 會說出你的名字嗎？
     <article class="panel">
       <h3>篝火計畫</h3>
       <p>晚上十點，圍著篝火。<br>每場一位講者，談一件真正做過的事。</p>
-      <div class="pairs">
+      <div class="solo">
         <button class="zoom" type="button" data-full="assets/campfire-01-06.jpg" aria-label="放大篝火計畫 01-06 聚圖卡"><img src="assets/campfire-01-06.jpg" loading="lazy" alt="篝火計畫 01 至 06 聚圖卡"></button>
         <button class="zoom" type="button" data-full="assets/campfire-07-13.jpg" aria-label="放大篝火計畫 07-13 聚圖卡"><img src="assets/campfire-07-13.jpg" loading="lazy" alt="篝火計畫 07 至 13 聚圖卡"></button>
       </div>
@@ -416,27 +433,30 @@ AI 會說出你的名字嗎？
 
 <section class="band" id="next" aria-labelledby="s-next"><div class="wrap">
   <div class="head center"><p class="eyebrow">2027</p><h2 id="s-next">明年，<br>我們要去<span class="gold">更遠的地方</span></h2><p class="orn" style="width:100%">◆</p></div>
-  <div class="next2">
+  <div class="next3">
+    <article class="n-card n-talk">
+      <button class="zoom" type="button" data-full="assets/late-night-2027.jpg" aria-label="放大 2027 深夜十談圖卡"><img src="assets/late-night-2027.jpg" loading="lazy" alt="深夜十談第 21 至 26 談圖卡"></button>
+      <div class="n-body">
+        <p class="eyebrow">2026.12 – 2027.05</p>
+        <h3>深夜十談<br><span class="gold">再度啟航</span></h3>
+        <p class="n-big"><b>21–26</b><span>談</span></p>
+        <p class="n-sub">六位來賓，六個關鍵選擇<br>12/16 由李宜靜中醫師開場</p>
+      </div>
+    </article>
     <article class="n-card n-summit">
-      <p class="eyebrow">2027.06.27（日）</p>
-      <h3>第三屆高峰年會</h3>
-      <p>政大公企中心國際會議廳</p>
+      <div>
+        <p class="eyebrow">2027.06.27（日）</p>
+        <h3>第三屆高峰年會</h3>
+        <p class="n-sub">政大公企中心國際會議廳</p>
+      </div>
       <ul class="n-facts">
         <li><b>250–270</b><span>位預計出席</span></li>
         <li><b>100+</b><span>位醫師已報名</span></li>
       </ul>
       <a class="btn" href="https://www.surveycake.com/s/mWdGq" target="_blank" rel="noopener">報名第三屆高峰年會</a>
     </article>
-    <article class="n-card n-talk">
-      <button class="zoom" type="button" data-full="assets/late-night-2027.jpg" aria-label="放大 2027 深夜十談圖卡"><img src="assets/late-night-2027.jpg" loading="lazy" alt="深夜十談第 21 至 26 談圖卡"></button>
-      <div>
-        <p class="eyebrow">2026.12 – 2027.05</p>
-        <h3>深夜十談，再度啟航</h3>
-        <p>第 21 至 26 談<br>12/16 由李宜靜中醫師開場</p>
-      </div>
-    </article>
   </div>
-  <p class="n-more"><span>新的主題月</span><span>新的企業參訪</span><span>夥伴第一次站上台</span></p>
+  <p class="n-more"><span>質感再提升</span><span>深化聚焦</span><span>多元斜槓</span></p>
 </div></section>
 
 </main>
@@ -445,6 +465,7 @@ AI 會說出你的名字嗎？
 <footer class="band"><canvas class="ribbon" data-seed="9" style="top:0;height:100%" aria-hidden="true"></canvas><div class="wrap center" style="gap:14px;justify-items:center;text-align:center">
   <h2>一群人一起打拼，<br><span class="gold">走得更遠。</span></h2>
   <p class="orn" style="width:100%">◆</p>
+  <p class="motto">多元 × 斜槓 × 人生</p>
   <p>© 2026 白袍人生學院</p>
 </div></footer>
 
