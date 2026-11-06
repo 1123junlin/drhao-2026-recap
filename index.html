@@ -257,23 +257,11 @@ footer{font-size:14px;color:var(--soft)}
       </div>
     </div>
   </div>
-  <a class="video" data-embed="https://player.vimeo.com/video/1216594504?autoplay=1&amp;dnt=1" href="https://vimeo.com/1216594504" target="_blank" rel="noopener">
-    <img src="assets/hero.jpg" loading="lazy" alt="">
-    <span class="play"><span class="tri"></span>2026 高峰年會花絮</span>
-  </a>
+  <div class="video"><iframe src="https://player.vimeo.com/video/1216594504?dnt=1" title="2026 高峰年會花絮" loading="lazy" allow="fullscreen; picture-in-picture; encrypted-media" allowfullscreen></iframe></div>
   <div class="shorts" aria-label="直式影片">
-    <a class="video portrait" data-embed="https://player.vimeo.com/video/1226477522?autoplay=1&amp;dnt=1" href="https://vimeo.com/1226477522" target="_blank" rel="noopener">
-      <img src="assets/summit.jpg" style="object-position:30% 50%" loading="lazy" alt="">
-      <span class="play"><span class="tri"></span>全體講師專訪</span>
-    </a>
-    <a class="video portrait" data-embed="https://player.vimeo.com/video/1217863012?autoplay=1&amp;dnt=1" href="https://vimeo.com/1217863012" target="_blank" rel="noopener">
-      <img src="assets/hero.jpg" style="object-position:30% 50%" loading="lazy" alt="">
-      <span class="play"><span class="tri"></span>診所導入 AI，要局部試水溫還是 All-in？｜曹皓崴醫師</span>
-    </a>
-    <a class="video portrait" data-embed="https://player.vimeo.com/video/1211592998?autoplay=1&amp;dnt=1" href="https://vimeo.com/1211592998" target="_blank" rel="noopener">
-      <img src="assets/hero.jpg" style="object-position:75% 50%" loading="lazy" alt="">
-      <span class="play"><span class="tri"></span>高峰年會夥伴突擊採訪</span>
-    </a>
+    <div class="video portrait"><iframe src="https://player.vimeo.com/video/1226477522?dnt=1" title="全體講師專訪" loading="lazy" allow="fullscreen; picture-in-picture; encrypted-media" allowfullscreen></iframe></div>
+    <div class="video portrait"><iframe src="https://player.vimeo.com/video/1217863012?dnt=1" title="診所導入 AI，要局部試水溫還是 All-in？｜曹皓崴醫師" loading="lazy" allow="fullscreen; picture-in-picture; encrypted-media" allowfullscreen></iframe></div>
+    <div class="video portrait"><iframe src="https://player.vimeo.com/video/1211592998?dnt=1" title="高峰年會夥伴突擊採訪" loading="lazy" allow="fullscreen; picture-in-picture; encrypted-media" allowfullscreen></iframe></div>
   </div>
 </div></section>
 
@@ -293,10 +281,7 @@ AI 會說出你的名字嗎？
     </div>
     <figure class="ph r43"><img src="assets/moat-1.jpg" loading="lazy" alt="AI 時代的數位護城河全體大合照"></figure>
   </div>
-  <a class="video" data-embed="https://www.youtube-nocookie.com/embed/KT5_ndtcWmk?autoplay=1" href="https://www.youtube.com/watch?v=KT5_ndtcWmk" target="_blank" rel="noopener">
-    <img src="assets/moat-3.jpg" loading="lazy" alt="">
-    <span class="play"><span class="tri"></span>AIEO 實戰課程影片</span>
-  </a>
+  <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/KT5_ndtcWmk" title="AIEO 實戰課程影片" loading="lazy" allow="fullscreen; picture-in-picture; encrypted-media" allowfullscreen></iframe></div>
   <div class="pairs">
     <figure class="ph r43"><img src="assets/moat-2.jpg" loading="lazy" alt="講師群大合照"></figure>
     <figure class="ph r43"><img src="assets/moat-3.jpg" loading="lazy" alt="陳昱傑醫師授課現場"></figure>
@@ -460,13 +445,6 @@ track.innerHTML=STEPS.map((s,i)=>`<li><label class="step" for="st${i}"><time>${s
 const update=()=>{document.getElementById('count').textContent=track.querySelectorAll('input:checked').length};
 track.addEventListener('change',update);
 
-document.querySelectorAll('.video').forEach(v=>v.addEventListener('click',e=>{
-  if(window.self!==window.top||location.protocol==='file:')return;
-  e.preventDefault();
-  const f=document.createElement('iframe');
-  f.src=v.dataset.embed;f.title='影片';f.allow='autoplay; fullscreen; encrypted-media; picture-in-picture';f.allowFullscreen=true;
-  const box=document.createElement('div');box.className=v.className;box.append(f);v.replaceWith(box);
-}));
 
 function rng(seed){return()=>(seed=(seed*16807)%2147483647)/2147483647}
 function drawRibbons(c){
