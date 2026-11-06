@@ -286,6 +286,27 @@ footer{font-size:14px;color:var(--soft)}
 .n-summit{border-color:var(--gold)}
 .n-banner{grid-column:1/-1;margin:0 0 4px}
 .n-banner img{width:100%;height:auto}
+#gift{position:fixed;inset:0;z-index:40;display:grid;place-items:center;padding:calc(20px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:rgba(7,20,38,.86);backdrop-filter:blur(3px)}
+.g-box{position:relative;width:min(440px,100%);max-height:100%;overflow:auto;background:linear-gradient(180deg,#123456 0%,var(--ink) 100%);border:1px solid var(--gold);box-shadow:0 0 60px rgba(224,162,53,.35);padding:38px 26px 28px;text-align:center;display:grid;gap:14px;justify-items:center}
+.g-close{position:absolute;top:10px;right:10px;width:40px;height:40px;background:none;border:0;color:var(--soft);font-size:26px;line-height:1;cursor:pointer}
+.g-stars{font-size:26px;letter-spacing:6px;color:var(--glow);text-shadow:0 0 14px var(--gold)}
+.g-box h3{font-size:clamp(24px,6vw,28px);line-height:1.4}
+.g-box p{color:var(--soft);line-height:1.8}
+.g-box p strong{color:var(--coat);font-weight:500}
+.g-form{display:grid;gap:10px;width:100%;margin-top:4px;text-align:left}
+.g-form label{font-size:13px;color:var(--soft)}
+.g-form input{width:100%;padding:12px 14px;font:400 16px/1.4 var(--sans);color:var(--coat);background:rgba(7,20,38,.7);border:1px solid rgba(251,249,243,.25)}
+.g-form input:focus{outline:2px solid var(--glow);outline-offset:1px;border-color:transparent}
+.g-form .btn{border:0;cursor:pointer;font-size:16px;margin-top:6px}
+.g-form .btn[disabled]{opacity:.6;cursor:wait}
+.g-note{font-size:12px!important;color:var(--soft)}
+.g-err{font-size:14px!important;color:#F6DDA6!important;min-height:1em}
+.g-code{display:grid;gap:6px;width:100%;padding:18px;border:1px dashed var(--gold);background:rgba(7,20,38,.6)}
+.g-code span{font-size:13px;color:var(--soft)}
+.g-code b{font:900 30px/1.3 var(--serif);letter-spacing:.08em;color:var(--glow);text-shadow:0 0 18px rgba(224,162,53,.5)}
+.g-warn{font-size:13px!important;color:var(--glow)!important}
+.g-copy{background:none;border:1px solid var(--gold);color:var(--coat);padding:8px 16px;font:500 14px/1 var(--sans);cursor:pointer}
+@media(prefers-reduced-motion:no-preference){.g-box{animation:gpop .45s cubic-bezier(.2,.9,.3,1.2)}@keyframes gpop{from{transform:scale(.88);opacity:0}}}
 </style>
 </head>
 <body>
@@ -493,6 +514,7 @@ AI 會說出你的名字嗎？
 
 </main>
 
+<div id="gift" hidden role="dialog" aria-modal="true" aria-labelledby="gTitle"><div class="g-box" id="gBox"></div></div>
 <div id="lb" hidden role="dialog" aria-modal="true" aria-label="圖卡放大檢視"><button id="lbClose" type="button">關閉</button><button id="lbPrev" class="lb-nav" type="button" aria-label="上一張">‹</button><img id="lbImg" alt=""><button id="lbNext" class="lb-nav" type="button" aria-label="下一張">›</button><p id="lbInfo"></p></div>
 <audio id="bgm" src="assets/music.m4a" loop autoplay preload="auto"></audio>
 <button id="music" type="button" aria-pressed="false" aria-label="播放背景音樂"><span class="ic" aria-hidden="true">▶</span><span class="tx">播放音樂</span></button>
@@ -528,6 +550,63 @@ track.innerHTML=STEPS.map((s,i)=>`<li><label class="step" for="st${i}"><time>${s
  +`<li><label class="step locked" for="stLast"><time>全年</time><span><strong>會員群組</strong></span><input type="checkbox" id="stLast" checked disabled><span class="box" aria-hidden="true">✦</span></label></li>`;
 const update=()=>{document.getElementById('count').textContent=track.querySelectorAll('input:checked').length};
 track.addEventListener('change',update);
+const ENDPOINT='https://script.google.com/macros/s/AKfycbxx2MAlQiCdHvGG_9F0ftIoGCmOQi54mVUFeL6o_p4LR6B5VqYlWmwy4SGNXTx_zl0-PQ/exec';
+const gift=document.getElementById('gift'),gBox=document.getElementById('gBox');
+const store={get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let reg=store.get('drhao26-reg');const shown={5:false,10:false};
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const litEvents=()=>[...track.querySelectorAll('input:checked')].map(i=>i.closest('label').querySelector('strong').textContent);
+const starCount=()=>track.querySelectorAll('input:checked').length;
+function closeGift(){gift.hidden=true}
+gift.addEventListener('click',e=>{if(e.target===gift||e.target.closest('.g-close'))closeGift()});
+addEventListener('keydown',e=>{if(e.key==='Escape'&&!gift.hidden)closeGift()});
+function openGift(html){gBox.innerHTML='<button class="g-close" type="button" aria-label="關閉">×</button>'+html;gift.hidden=false;(gBox.querySelector('input')||gBox.querySelector('.g-close')).focus()}
+async function send(name,email){
+  if(!ENDPOINT)throw new Error('no endpoint');
+  const r=await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({name,email,stars:starCount(),events:litEvents()})});
+  const d=await r.json();if(!d.ok)throw new Error(d.error||'fail');return d;
+}
+const formHtml=btn=>`<form class="g-form" id="gForm" novalidate>
+  <label for="gName">姓名</label><input id="gName" name="name" autocomplete="name" required maxlength="50">
+  <label for="gEmail">Email</label><input id="gEmail" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="100">
+  <p class="g-err" id="gErr" role="alert"></p>
+  <button class="btn" type="submit">${btn}</button>
+  <p class="g-note">資料僅用於白袍人生學院 2027 活動通知</p></form>`;
+function bindForm(onDone){
+  const f=document.getElementById('gForm'),err=document.getElementById('gErr');
+  f.addEventListener('submit',async e=>{e.preventDefault();
+    const name=f.name.value.trim(),email=f.email.value.trim();
+    if(!name){err.textContent='請輸入姓名';f.name.focus();return}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){err.textContent='請輸入正確的 Email';f.email.focus();return}
+    const b=f.querySelector('.btn');b.disabled=true;b.textContent='送出中⋯';err.textContent='';
+    try{const d=await send(name,email);reg={name,email};store.set('drhao26-reg',reg);onDone(d)}
+    catch(x){err.textContent='送出沒有成功，請再試一次';b.disabled=false;b.textContent='再試一次'}});
+}
+function five(){
+  openGift(`<p class="g-stars" aria-hidden="true">✦ ✦ ✦ ✦ ✦</p>
+  <h3 id="gTitle">點亮 5 顆星</h3>
+  <p>感謝您積極參與白袍人生學院活動<br>恭喜您獲得 <strong>2027 年活動邀請優先權</strong><br>請輸入姓名、信箱，將優先通知您</p>`+formHtml('登記優先通知'));
+  bindForm(()=>{gBox.querySelector('.g-form').outerHTML=`<p><strong>${esc(reg.name)}</strong>，已為您完成登記<br>2027 有新活動，您會第一個知道</p><p class="g-note">繼續點亮，還有驚喜</p>`});
+}
+function giftHtml(){return `<div class="g-code"><span>恭喜您獲得</span><b class="g-gift">神秘精美好禮</b></div>
+  <p class="g-note">領取方式將另行通知您</p>`}
+const tenHead=`<p class="g-stars" aria-hidden="true">✦ ✦ ✦ ✦ ✦<br>✦ ✦ ✦ ✦ ✦</p>
+  <h3 id="gTitle">十顆星，閃耀一整年</h3>
+  <p>謝謝你，一整年都在現場<br>每一次出席、每一次提問<br>都讓白院走得更遠</p>`;
+async function ten(){
+  if(reg){
+    openGift(tenHead+`<p>我們已登記您的資料<br><strong>${esc(reg.name)}</strong>｜${esc(reg.email)}<br>2027 的新活動，會優先通知您</p>`+giftHtml());
+    send(reg.name,reg.email).catch(()=>{});
+  }else{
+    openGift(tenHead+`<p>留下姓名與信箱<br>領取 2027 優先通知與神秘精美好禮</p>`+formHtml('登記領取好禮'));
+    bindForm(()=>{gBox.querySelector('.g-form').outerHTML=`<p>已登記：<strong>${esc(reg.name)}</strong></p>`+giftHtml()});
+  }
+}
+track.addEventListener('change',e=>{const n=starCount();
+  if(!e.target.checked)return;
+  if(n>=10&&!shown[10]){shown[10]=shown[5]=true;ten()}
+  else if(n>=5&&!shown[5]){shown[5]=true;five()}});
+
 
 
 function rng(seed){return()=>(seed=(seed*16807)%2147483647)/2147483647}
