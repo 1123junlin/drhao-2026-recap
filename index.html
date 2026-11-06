@@ -7,7 +7,7 @@
 <meta name="description" content="白袍人生學院 2026 年度活動回顧。">
 <meta property="og:title" content="2026白袍人生學院活動回顧">
 <meta property="og:description" content="這一年，謝謝你一起走過。">
-<meta property="og:image" content="https://drhao33.com/images/events/2026-06-27-summit/photo-group.jpg">
+<meta property="og:image" content="https://1123junlin.github.io/drhao-2026-recap/assets/hero.jpg">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&family=Noto+Sans+TC:wght@300;400;500;700&family=Montserrat:wght@500;600&display=swap">
@@ -204,6 +204,17 @@ footer{font-size:14px;color:var(--soft)}
 #lb img{max-width:100%;max-height:100%;object-fit:contain}
 #lbClose{position:absolute;top:calc(12px + env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px));font:500 15px/1 var(--sans);padding:10px 14px;background:var(--glass);color:var(--coat);border:1px solid var(--gold);cursor:pointer}
 .logo{width:120px}
+.moments{display:grid;grid-template-columns:repeat(3,1fr);gap:24px 18px}
+.moment{min-width:0;display:grid;gap:8px;align-content:start}
+.moment .zoom{margin:0}
+.m-main .zoom img{aspect-ratio:4/3;object-fit:cover}
+.m-thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.m-thumbs img{aspect-ratio:4/3;object-fit:cover}
+.m-date{font:600 13px/1.4 var(--num);color:var(--gold);font-variant-numeric:tabular-nums}
+.moment h3{font-size:18px;line-height:1.45}
+.poster{max-width:300px;margin:6px 0 0}
+.poster .zoom{margin:0}
+@media(max-width:640px){.moments{grid-template-columns:repeat(2,1fr)}.moment h3{font-size:16px}}
 </style>
 </head>
 <body>
@@ -216,9 +227,9 @@ footer{font-size:14px;color:var(--soft)}
   <h1>這一年<br>謝謝你<br><span class="gold">一起走過</span></h1>
   <p class="orn">◆</p>
   <p class="sub">2026 白袍人生學院活動回顧</p>
-  <div class="frame" style="width:100%"><figure class="ph r169"><img src="assets/summit-group.jpg" alt="白袍人生學院第二屆高峰年會全體與會者大合照" onerror="this.remove()"><span>第二屆高峰年會全體大合照</span></figure></div>
+  <div class="frame" style="width:100%"><figure class="ph r169"><img src="assets/hero.jpg" alt="白袍人生學院 2026 大合照" onerror="this.remove()"></figure></div>
   <div class="stats">
-    <div class="stat"><b>10</b><small>場實體活動</small></div>
+    <div class="stat"><b>11</b><small>場實體活動</small></div>
     <div class="stat"><b>195</b><small>位夥伴齊聚高峰年會</small></div>
     <div class="stat"><b>18</b><small>場品牌月直播</small></div>
     <div class="stat"><b>8</b><small>場篝火計畫</small></div>
@@ -228,7 +239,7 @@ footer{font-size:14px;color:var(--soft)}
 <main>
 <section class="band" aria-labelledby="s-summit"><div class="wrap">
   <div class="feature">
-    <figure class="ph r43"><img src="https://drhao33.com/images/events/2026-06-27-summit/photo-audience.jpg" loading="lazy" alt="高峰年會現場滿座的醫師、院長與診所經營者" onerror="this.remove()"><span>高峰年會現場</span></figure>
+    <figure class="ph r43"><img src="assets/summit.jpg" loading="lazy" alt="第二屆高峰年會大合照"></figure>
     <div>
       <p class="eyebrow">2026.06.27 · 新竹竹北</p>
       <h2 id="s-summit">第二屆高峰年會<br>復盤過去 × 展望未來</h2>
@@ -242,20 +253,20 @@ footer{font-size:14px;color:var(--soft)}
     </div>
   </div>
   <a class="video" data-embed="https://player.vimeo.com/video/1216594504?autoplay=1&amp;dnt=1" href="https://vimeo.com/1216594504" target="_blank" rel="noopener">
-    <img src="assets/summit-group.jpg" loading="lazy" alt="" onerror="this.remove()">
+    <img src="assets/hero.jpg" loading="lazy" alt="">
     <span class="play"><span class="tri"></span>2026 高峰年會花絮</span>
   </a>
   <div class="shorts" aria-label="直式影片">
     <a class="video portrait" data-embed="https://player.vimeo.com/video/1226477522?autoplay=1&amp;dnt=1" href="https://vimeo.com/1226477522" target="_blank" rel="noopener">
-      <img src="https://drhao33.com/images/events/2026-06-27-summit/photo-lecturers.jpg" loading="lazy" alt="" onerror="this.remove()">
+      <img src="assets/summit.jpg" style="object-position:30% 50%" loading="lazy" alt="">
       <span class="play"><span class="tri"></span>全體講師專訪</span>
     </a>
     <a class="video portrait" data-embed="https://player.vimeo.com/video/1217863012?autoplay=1&amp;dnt=1" href="https://vimeo.com/1217863012" target="_blank" rel="noopener">
-      <img src="https://drhao33.com/images/events/2026-06-27-summit/photo-audience.jpg" loading="lazy" alt="" onerror="this.remove()">
+      <img src="assets/hero.jpg" style="object-position:30% 50%" loading="lazy" alt="">
       <span class="play"><span class="tri"></span>診所導入 AI，要局部試水溫還是 All-in？｜曹皓崴醫師</span>
     </a>
     <a class="video portrait" data-embed="https://player.vimeo.com/video/1211592998?autoplay=1&amp;dnt=1" href="https://vimeo.com/1211592998" target="_blank" rel="noopener">
-      <img src="https://drhao33.com/images/events/2026-06-27-summit/photo-group.jpg" loading="lazy" alt="" onerror="this.remove()">
+      <img src="assets/hero.jpg" style="object-position:75% 50%" loading="lazy" alt="">
       <span class="play"><span class="tri"></span>高峰年會夥伴突擊採訪</span>
     </a>
   </div>
@@ -275,16 +286,75 @@ AI 會說出你的名字嗎？
         <div class="stat"><b>56</b><small>位醫師公開寫下心得</small></div>
       </div>
     </div>
-    <figure class="ph r43"><img src="assets/moat-group.jpg" loading="lazy" alt="AI 時代的數位護城河全體大合照" onerror="this.remove()"></figure>
+    <figure class="ph r43"><img src="assets/moat-1.jpg" loading="lazy" alt="AI 時代的數位護城河全體大合照"></figure>
   </div>
   <a class="video" data-embed="https://www.youtube-nocookie.com/embed/KT5_ndtcWmk?autoplay=1" href="https://www.youtube.com/watch?v=KT5_ndtcWmk" target="_blank" rel="noopener">
-    <img src="https://drhao33.com/images/events/thumbs/2026-05-17-aieo-960.webp" loading="lazy" alt="" onerror="this.remove()">
+    <img src="assets/moat-3.jpg" loading="lazy" alt="">
     <span class="play"><span class="tri"></span>AIEO 實戰課程影片</span>
   </a>
-  <div class="shots">
-    <figure class="ph r43"><img src="https://drhao33.com/images/events/thumbs/2026-05-17-aieo-960.webp" loading="lazy" alt="AIEO 5 月場現場全景" onerror="this.remove()"></figure>
-    <figure class="ph r43"><img src="https://drhao33.com/images/events/2026-08-30-aieo/workshop.webp" loading="lazy" alt="夥伴圍桌操作筆電分組實作" onerror="this.remove()"></figure>
-    <figure class="ph r43"><img src="https://drhao33.com/images/events/2026-08-30-aieo/closing.webp" loading="lazy" alt="陳昱傑醫師在課程尾聲向夥伴致意" onerror="this.remove()"></figure>
+  <div class="pairs">
+    <figure class="ph r43"><img src="assets/moat-2.jpg" loading="lazy" alt="講師群大合照"></figure>
+    <figure class="ph r43"><img src="assets/moat-3.jpg" loading="lazy" alt="陳昱傑醫師授課現場"></figure>
+  </div>
+</div></section>
+
+<section class="band" id="moments" aria-labelledby="s-moments"><div class="wrap">
+  <div class="head"><p class="eyebrow">Moments</p><h2 id="s-moments">今年的<span class="gold">每一個現場</span></h2></div>
+  <div class="moments">
+    <article class="moment">
+      <div class="m-main"><button class="zoom" type="button" data-full="assets/moments/0103-1.jpg" aria-label="放大醫師自媒體實戰課台中場照片 1"><img src="assets/moments/0103-1.jpg" loading="lazy" alt="醫師自媒體實戰課台中場照片 1"></button></div>
+      <div class="m-thumbs"><button class="zoom" type="button" data-full="assets/moments/0103-2.jpg" aria-label="放大醫師自媒體實戰課台中場照片 2"><img src="assets/moments/0103-2.jpg" loading="lazy" alt="醫師自媒體實戰課台中場照片 2"></button></div>
+      <p class="m-date">01/03</p>
+      <h3>醫師自媒體實戰課台中場</h3>
+    </article>
+    <article class="moment">
+      <div class="m-main"><button class="zoom" type="button" data-full="assets/moments/0322-1.jpg" aria-label="放大台北康博參訪照片 1"><img src="assets/moments/0322-1.jpg" loading="lazy" alt="台北康博參訪照片 1"></button></div>
+      
+      <p class="m-date">03/22</p>
+      <h3>台北康博參訪</h3>
+    </article>
+    <article class="moment">
+      <div class="m-main"><button class="zoom" type="button" data-full="assets/moments/0329-1.jpg" aria-label="放大首場腦力風暴大會照片 1"><img src="assets/moments/0329-1.jpg" loading="lazy" alt="首場腦力風暴大會照片 1"></button></div>
+      <div class="m-thumbs"><button class="zoom" type="button" data-full="assets/moments/0329-2.jpg" aria-label="放大首場腦力風暴大會照片 2"><img src="assets/moments/0329-2.jpg" loading="lazy" alt="首場腦力風暴大會照片 2"></button></div>
+      <p class="m-date">03/29</p>
+      <h3>首場腦力風暴大會</h3>
+    </article>
+    <article class="moment">
+      <div class="m-main"><button class="zoom" type="button" data-full="assets/moments/0419-1.jpg" aria-label="放大系統化的實戰醫療溝通術 3.0照片 1"><img src="assets/moments/0419-1.jpg" loading="lazy" alt="系統化的實戰醫療溝通術 3.0照片 1"></button></div>
+      <div class="m-thumbs"><button class="zoom" type="button" data-full="assets/moments/0419-2.jpg" aria-label="放大系統化的實戰醫療溝通術 3.0照片 2"><img src="assets/moments/0419-2.jpg" loading="lazy" alt="系統化的實戰醫療溝通術 3.0照片 2"></button></div>
+      <p class="m-date">04/19</p>
+      <h3>系統化的實戰醫療溝通術 3.0</h3>
+    </article>
+    <article class="moment">
+      <div class="m-main"><button class="zoom" type="button" data-full="assets/moments/0701a-1.jpg" aria-label="放大民視企業參訪照片 1"><img src="assets/moments/0701a-1.jpg" loading="lazy" alt="民視企業參訪照片 1"></button></div>
+      <div class="m-thumbs"><button class="zoom" type="button" data-full="assets/moments/0701a-2.jpg" aria-label="放大民視企業參訪照片 2"><img src="assets/moments/0701a-2.jpg" loading="lazy" alt="民視企業參訪照片 2"></button><button class="zoom" type="button" data-full="assets/moments/0701a-3.jpg" aria-label="放大民視企業參訪照片 3"><img src="assets/moments/0701a-3.jpg" loading="lazy" alt="民視企業參訪照片 3"></button></div>
+      <p class="m-date">07/01</p>
+      <h3>民視企業參訪</h3>
+    </article>
+    <article class="moment">
+      <div class="m-main"><button class="zoom" type="button" data-full="assets/moments/0701b-1.jpg" aria-label="放大阿金火星計劃照片 1"><img src="assets/moments/0701b-1.jpg" loading="lazy" alt="阿金火星計劃照片 1"></button></div>
+      <div class="m-thumbs"><button class="zoom" type="button" data-full="assets/moments/0701b-2.jpg" aria-label="放大阿金火星計劃照片 2"><img src="assets/moments/0701b-2.jpg" loading="lazy" alt="阿金火星計劃照片 2"></button></div>
+      <p class="m-date">07/01</p>
+      <h3>阿金火星計劃</h3>
+    </article>
+    <article class="moment">
+      <div class="m-main"><button class="zoom" type="button" data-full="assets/moments/0711-1.jpg" aria-label="放大院長腦力風暴照片 1"><img src="assets/moments/0711-1.jpg" loading="lazy" alt="院長腦力風暴照片 1"></button></div>
+      
+      <p class="m-date">07/11</p>
+      <h3>院長腦力風暴</h3>
+    </article>
+    <article class="moment">
+      <div class="m-main"><button class="zoom" type="button" data-full="assets/moments/0830-1.jpg" aria-label="放大AI 時代的數位護城河 小班制照片 1"><img src="assets/moments/0830-1.jpg" loading="lazy" alt="AI 時代的數位護城河 小班制照片 1"></button></div>
+      <div class="m-thumbs"><button class="zoom" type="button" data-full="assets/moments/0830-2.jpg" aria-label="放大AI 時代的數位護城河 小班制照片 2"><img src="assets/moments/0830-2.jpg" loading="lazy" alt="AI 時代的數位護城河 小班制照片 2"></button></div>
+      <p class="m-date">08/30</p>
+      <h3>AI 時代的數位護城河 小班制</h3>
+    </article>
+    <article class="moment">
+      <div class="m-main"><button class="zoom" type="button" data-full="assets/moments/1025-1.jpg" aria-label="放大功能醫學專業班照片 1"><img src="assets/moments/1025-1.jpg" loading="lazy" alt="功能醫學專業班照片 1"></button></div>
+      <div class="m-thumbs"><button class="zoom" type="button" data-full="assets/moments/1025-2.jpg" aria-label="放大功能醫學專業班照片 2"><img src="assets/moments/1025-2.jpg" loading="lazy" alt="功能醫學專業班照片 2"></button></div>
+      <p class="m-date">10/25</p>
+      <h3>功能醫學專業班</h3>
+    </article>
   </div>
 </div></section>
 
@@ -331,7 +401,6 @@ AI 會說出你的名字嗎？
     <figure><blockquote>讓對的人，被你的價值打動</blockquote><a href="https://www.facebook.com/share/p/1M4RrUPTDo/" target="_blank" rel="noopener">王仁昌醫師｜高峰年會心得</a></figure>
     <figure><blockquote>「誠實」是 YMYL 最重要的一環</blockquote><a href="https://www.facebook.com/share/p/1DovFLcGJy/?mibextid=wwXIfr" target="_blank" rel="noopener">沈煜庭醫師｜AIEO 心得</a></figure>
   </div>
-  <p class="slot">【待補】張益豪部落格文章</p>
 </div></section>
 
 <section class="band" id="next" aria-labelledby="s-next"><div class="wrap">
@@ -345,7 +414,7 @@ AI 會說出你的名字嗎？
     </article>
     <ul>
       <li><strong>深夜十談，再度啟航</strong>12/16 第 21 談，李宜靜中醫師
-        <p class="slot">【待補】2027 深夜十談圖卡</p></li>
+        <div class="poster"><button class="zoom" type="button" data-full="assets/late-night-2027.jpg" aria-label="放大 2027 深夜十談圖卡"><img src="assets/late-night-2027.jpg" loading="lazy" alt="深夜十談第 21 至 26 談圖卡"></button></div></li>
       <li><strong>新的主題月、新的企業參訪</strong>也有夥伴將第一次站上台分享</li>
     </ul>
   </div>
@@ -368,13 +437,13 @@ const STEPS=[
  ['02/12','首屆聚光燈舞台','會員線上'],
  ['03/22','台北康博參訪','企業參訪'],
  ['03/29','首場腦力風暴大會','寒舍艾美酒店'],
- ['04/19','醫療溝通術 3.0 台中工作坊','張益豪醫師'],
+ ['04/19','系統化的實戰醫療溝通術 3.0','張益豪醫師'],
  ['05/17','AI 時代的數位護城河','陳昱傑醫師'],
  ['06/27','第二屆高峰年會','新竹竹北'],
  ['07/01','民視企業參訪','新北林口'],
- ['07/01','火星計劃',''],
- ['07/11','跨界腦力風暴大會','寒舍艾美酒店'],
- ['08/30','AIEO 小班制第二梯','限額 30 人'],
+ ['07/01','阿金火星計劃',''],
+ ['07/11','院長腦力風暴','寒舍艾美酒店'],
+ ['08/30','AI 時代的數位護城河 小班制','限額 30 人'],
  ['10/25','功能醫學專業班','主辦：大象醫師周維薪｜協辦：白袍人生學院'],
  ['11/28','感謝祭晚宴','台北南港'],
  ['全年','品牌月','線上直播'],
