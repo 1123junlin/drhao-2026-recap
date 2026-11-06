@@ -307,6 +307,9 @@ footer{font-size:14px;color:var(--soft)}
 .g-warn{font-size:13px!important;color:var(--glow)!important}
 .g-copy{background:none;border:1px solid var(--gold);color:var(--coat);padding:8px 16px;font:500 14px/1 var(--sans);cursor:pointer}
 @media(prefers-reduced-motion:no-preference){.g-box{animation:gpop .45s cubic-bezier(.2,.9,.3,1.2)}@keyframes gpop{from{transform:scale(.88);opacity:0}}}
+.moments{display:flex;flex-wrap:wrap;justify-content:center;gap:32px 20px}
+.moment{flex:0 0 calc((100% - 60px)/4)}
+@media(max-width:640px){.moments{gap:24px 12px}.moment{flex-basis:calc((100% - 12px)/2)}.moment:last-child{grid-column:auto}.moment:last-child .m-photo{aspect-ratio:4/3}}
 </style>
 </head>
 <body>
@@ -321,7 +324,7 @@ footer{font-size:14px;color:var(--soft)}
   <p class="sub">2026 白袍人生學院活動回顧</p>
   <div class="frame" style="width:100%"><figure class="ph r169"><img src="assets/hero.jpg" alt="白袍人生學院 2026 大合照" onerror="this.remove()"></figure></div>
   <div class="stats">
-    <div class="stat"><b>11</b><small>場實體活動</small></div>
+    <div class="stat"><b>12</b><small>場實體活動</small></div>
     <div class="stat"><b>195</b><small>位夥伴齊聚高峰年會</small></div>
     <div class="stat"><b>18</b><small>場品牌月直播</small></div>
     <div class="stat"><b>8</b><small>場篝火計畫</small></div>
@@ -397,6 +400,11 @@ AI 會說出你的名字嗎？
       <span class="m-photo"><img src="assets/moments/0419-1.jpg" loading="lazy" alt="系統化的實戰醫療溝通術 3.0"><span class="m-count">2 張</span></span>
       <span class="m-date">04/19</span>
       <span class="m-name">系統化的實戰醫療溝通術 3.0</span>
+    </button>
+    <button class="moment" type="button" data-photos='["assets/moments/0503-1.jpg", "assets/moments/0503-2.jpg", "assets/moments/0503-3.jpg"]' data-name="一分鐘精準讀心" aria-label="查看一分鐘精準讀心照片，共 3 張">
+      <span class="m-photo"><img src="assets/moments/0503-1.jpg" loading="lazy" alt="一分鐘精準讀心"><span class="m-count">3 張</span></span>
+      <span class="m-date">05/03</span>
+      <span class="m-name">一分鐘精準讀心</span>
     </button>
     <button class="moment" type="button" data-photos='["assets/moments/0701a-1.jpg", "assets/moments/0701a-2.jpg", "assets/moments/0701a-3.jpg"]' data-name="民視企業參訪" aria-label="查看民視企業參訪照片，共 3 張">
       <span class="m-photo"><img src="assets/moments/0701a-1.jpg" loading="lazy" alt="民視企業參訪"><span class="m-count">3 張</span></span>
@@ -549,6 +557,7 @@ const STEPS=[
  ['03/22','台北康博參訪','企業參訪'],
  ['03/29','首場腦力風暴大會','寒舍艾美酒店'],
  ['04/19','系統化的實戰醫療溝通術 3.0','張益豪醫師'],
+ ['05/03','一分鐘精準讀心',''],
  ['05/17','AI 時代的數位護城河','陳昱傑醫師'],
  ['06/27','第二屆高峰年會','新竹竹北'],
  ['07/01','民視企業參訪','新北林口'],
