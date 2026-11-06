@@ -215,6 +215,11 @@ footer{font-size:14px;color:var(--soft)}
 .poster{max-width:300px;margin:6px 0 0}
 .poster .zoom{margin:0}
 @media(max-width:640px){.moments{grid-template-columns:repeat(2,1fr)}.moment h3{font-size:16px}}
+.cards{columns:auto;display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.cards>*{min-width:0}
+.cards .zoom{margin:0;aspect-ratio:3/2;background:rgba(7,20,38,.55);border:1px solid var(--hair);padding:8px}
+.cards .zoom img{width:100%;height:100%;object-fit:contain}
+@media(max-width:640px){.cards{columns:auto;grid-template-columns:1fr;gap:12px}}
 </style>
 </head>
 <body>
