@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>2026白袍人生學院活動回顧</title>
+<meta name="description" content="白袍人生學院 2026 年度活動回顧。">
+<meta property="og:title" content="2026白袍人生學院活動回顧">
+<meta property="og:description" content="這一年，謝謝你一起走過。">
+<meta property="og:image" content="https://drhao33.com/images/events/2026-06-27-summit/photo-group.jpg">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&family=Noto+Sans+TC:wght@300;400;500;700&family=Montserrat:wght@500;600&display=swap">
+<style>
+/* 版面概念：深夜星空與金色光帶，一條光從年初流到 2027；勾選足跡就點亮星星。 */
+:root{
+  --night:#071426;--ink:#0E2A45;--navy:#1A3D63;--sky:#5E8CB5;--gold:#E0A235;--glow:#F6DDA6;--coat:#FBF9F3;--cloud:#E9E7E0;
+  --soft:rgba(251,249,243,.82);--hair:rgba(224,162,53,.38);--glass:rgba(14,42,69,.72);
+  --serif:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  --num:Montserrat,"Noto Sans TC",sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--coat);font:400 16px/1.85 var(--sans);padding-bottom:env(safe-area-inset-bottom,0px);overflow-x:hidden}
+#stars{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+header,main,footer{position:relative;z-index:1}
+h1,h2,h3,p,figure,ul,ol,blockquote,dl{margin:0;padding:0}
+ul,ol{list-style:none}
+a{color:inherit}
+img{display:block;max-width:100%}
+.band{padding-block:clamp(52px,8vw,96px);position:relative}
+.wrap{position:relative;max-width:1000px;margin-inline:auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));display:grid;gap:30px}
+.wrap>*{min-width:0}
+.eyebrow{font:600 12px/1.5 var(--num);letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+h1,h2,h3{font-family:var(--serif);font-weight:900;line-height:1.35;text-wrap:balance;color:var(--coat)}
+h1{font-size:clamp(40px,8.5vw,78px);line-height:1.22;text-shadow:0 0 34px rgba(224,162,53,.28)}
+h2{font-size:clamp(28px,5vw,44px)}
+h3{font-size:23px;font-weight:700}
+.gold,h2 .gold{background:linear-gradient(180deg,var(--glow),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.orn{display:flex;align-items:center;gap:12px;color:var(--glow);font-size:13px;line-height:1;max-width:320px}
+.orn::before,.orn::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.orn::after{transform:scaleX(-1)}
+.lede{max-width:34em;white-space:pre-line;color:var(--soft)}
+.head{display:grid;gap:14px}
+.center{text-align:center;justify-items:center}
+canvas.ribbon{position:absolute;left:0;width:100%;pointer-events:none}
+
+.ph{position:relative;background:var(--glass);overflow:hidden;max-width:100%;border:1px solid var(--hair)}
+.ph img{width:100%;height:100%;object-fit:cover;position:relative;z-index:1}
+.ph span{position:absolute;inset:auto 14px 12px;color:var(--soft);font-size:13px;line-height:1.5}
+.r169{aspect-ratio:16/9}.r43{aspect-ratio:4/3}.r45{aspect-ratio:4/5}
+.frame{position:relative;padding:10px}
+.frame::before,.frame::after{content:"";position:absolute;width:44px;height:44px;border:2px solid var(--glow);z-index:2;pointer-events:none}
+.frame::before{left:0;top:0;border-right:0;border-bottom:0}
+.frame::after{right:0;bottom:0;border-left:0;border-top:0}
+
+.hero{position:relative;overflow:hidden}
+.hero .wrap{padding-block:44px 40px;gap:22px;justify-items:center;text-align:center}
+.hero canvas.ribbon{top:0;height:100%}
+.logo{width:96px;height:auto}
+.hero p.sub{color:var(--soft);font-size:18px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;width:100%}
+.stat b{display:block;font:600 clamp(34px,5vw,46px)/1.15 var(--num);font-variant-numeric:tabular-nums;color:var(--glow);text-shadow:0 0 18px rgba(224,162,53,.4)}
+.stat small{display:block;font-size:14px;line-height:1.5;margin-top:6px;color:var(--soft)}
+@media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stats.pair{grid-template-columns:repeat(2,1fr)}
+
+.feature{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(24px,5vw,56px);align-items:center}
+.feature>*{min-width:0;display:grid;gap:20px}
+@media(max-width:800px){.feature{grid-template-columns:1fr}}
+.pull{border-left:2px solid var(--gold);padding-left:16px}
+.pull cite{display:block;font-style:normal;font-size:13px;margin-top:4px;color:var(--soft)}
+.shots{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.video{display:block;position:relative;aspect-ratio:16/9;background:var(--glass);color:var(--coat);text-decoration:none;overflow:hidden;border:1px solid var(--hair)}
+.video img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.6}
+.video .play{position:absolute;left:18px;bottom:16px;right:18px;display:flex;align-items:center;gap:12px;font-weight:500;line-height:1.45}
+.video .tri{flex:none;width:48px;height:48px;border-radius:50%;background:var(--gold);position:relative;box-shadow:0 0 24px rgba(224,162,53,.7)}
+.video .tri::after{content:"";position:absolute;left:19px;top:15px;border-left:15px solid var(--night);border-top:9px solid transparent;border-bottom:9px solid transparent}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.links{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.links a{display:block;padding:14px 16px;background:var(--glass);text-decoration:none;font-weight:500;line-height:1.5;border:1px solid var(--hair)}
+.links a small{display:block;font:500 12px/1.6 var(--num);color:var(--gold)}
+@media(max-width:700px){.links{grid-template-columns:1fr}}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,40px)}
+.two>*{min-width:0;display:grid;gap:14px;align-content:start;background:var(--glass);padding:24px;border:1px solid var(--hair)}
+@media(max-width:800px){.two{grid-template-columns:1fr}}
+.months{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:15px;line-height:1.6}
+.months dt{font:600 14px/1.7 var(--num);color:var(--gold)}
+.months dd{margin:0}
+.slot{border:1px dashed var(--gold);padding:14px;font-size:14px;line-height:1.6;color:var(--glow);text-align:center}
+
+.track{display:grid;border-left:1px solid var(--gold);margin-left:6px}
+.track li{min-width:0}
+.step{display:grid;grid-template-columns:62px 1fr 30px;gap:12px;align-items:center;padding:12px 0 12px 16px;cursor:pointer;border-bottom:1px solid rgba(251,249,243,.12);position:relative}
+.step input{position:absolute;opacity:0;width:30px;height:30px;right:0;margin:0;cursor:pointer}
+.step time{font:600 13px/1.4 var(--num);color:var(--gold);font-variant-numeric:tabular-nums}
+.step strong{display:block;font-weight:500;line-height:1.5}
+.step small{display:block;font-size:13px;line-height:1.5;color:var(--soft)}
+.box{width:30px;height:30px;display:grid;place-items:center;font-size:22px;line-height:1;color:rgba(251,249,243,.3)}
+.step input:checked~.box{color:var(--glow);text-shadow:0 0 12px var(--gold),0 0 26px var(--gold)}
+.step input:focus-visible~.box{outline:2px solid var(--glow);outline-offset:2px}
+.step.locked{cursor:default}
+.tally{position:sticky;bottom:calc(12px + env(safe-area-inset-bottom,0px));background:var(--ink);border:1px solid var(--hair);padding:14px 20px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;z-index:5}
+.tally b{font:600 36px/1 var(--num);color:var(--glow)}
+
+.voices{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.voices>*{min-width:0}
+.voices blockquote{font-family:var(--serif);font-weight:700;font-size:20px;line-height:1.6}
+.voices a{display:block;font-size:13px;margin-top:10px;color:var(--soft)}
+@media(max-width:800px){.voices{grid-template-columns:1fr}}
+
+.fork{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%;max-width:640px}
+.fork>*{min-width:0}
+.fork button{font:700 17px/1.5 var(--sans);padding:18px 16px;background:var(--glass);color:var(--coat);border:1px solid var(--gold);cursor:pointer}
+.fork button small{display:block;font-weight:400;font-size:13px;color:var(--soft)}
+.fork button[aria-pressed="true"]{background:var(--gold);color:var(--night)}
+.fork button[aria-pressed="true"] small{color:var(--night)}
+@media(max-width:480px){.fork{grid-template-columns:1fr}}
+
+.four{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.four>*{min-width:0;border-top:1px solid var(--gold);padding-top:12px}
+.four b{font-family:var(--serif);font-size:19px;display:block}
+.four p{font-size:14px;line-height:1.7;color:var(--soft);margin-top:6px}
+@media(max-width:800px){.four{grid-template-columns:repeat(2,1fr)}}
+.founder{display:grid;grid-template-columns:300px 1fr;gap:clamp(24px,5vw,48px);align-items:center}
+.founder>*{min-width:0}
+.founder>div{display:grid;gap:14px}
+.founder li{padding-block:7px;border-bottom:1px solid rgba(251,249,243,.14)}
+.textlink{color:var(--glow);font-weight:500}
+@media(max-width:700px){.founder{grid-template-columns:1fr}}
+
+.next{display:grid;grid-template-columns:1.2fr 1fr;gap:24px}
+.next>*{min-width:0}
+.next .big{background:var(--glass);border:1px solid var(--hair);padding:28px;display:grid;gap:12px;align-content:center}
+.next .big h3{font-size:30px}
+.next ul{display:grid}
+.next li{padding-block:14px;border-bottom:1px solid rgba(251,249,243,.14);display:grid;gap:6px}
+.next li strong{font-family:var(--serif);font-size:18px}
+@media(max-width:800px){.next{grid-template-columns:1fr}}
+
+.value{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.value>details{min-width:0;background:var(--glass);border:1px solid var(--hair);padding:20px}
+.value summary{cursor:pointer;font-family:var(--serif);font-weight:700;font-size:21px;line-height:1.45}
+.value summary small{display:block;font:400 14px/1.6 var(--sans);color:var(--soft);margin-top:4px}
+.value ul{display:grid;gap:12px;margin-top:14px;font-size:15px;line-height:1.7}
+.value li strong{display:block;color:var(--glow);font-weight:500}
+@media(max-width:800px){.value{grid-template-columns:1fr}}
+.worth{font-family:var(--serif);font-weight:700;font-size:21px;color:var(--glow)}
+
+.plans{display:grid;grid-template-columns:repeat(3,1fr)}
+.plans li{min-width:0;padding:20px 18px;border:1px solid rgba(251,249,243,.14);display:grid;gap:4px;align-content:start;opacity:.72}
+.plans li.on{background:var(--glass);opacity:1;border-color:var(--gold);box-shadow:0 0 30px rgba(224,162,53,.25)}
+.plans b{font:600 28px/1.3 var(--num);font-variant-numeric:tabular-nums}
+.plans li.on b{color:var(--glow)}
+.plans small{font-size:14px;line-height:1.6;color:var(--soft)}
+@media(max-width:700px){.plans{grid-template-columns:1fr}}
+.paths{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.paths>*{min-width:0;display:grid;gap:12px;align-content:space-between;padding:22px;background:var(--glass);border:1px solid var(--hair)}
+.paths p{color:var(--soft);font-size:15px}
+.paths.solo{grid-template-columns:1fr}
+@media(max-width:700px){.paths{grid-template-columns:1fr}}
+.btn{display:inline-block;background:linear-gradient(180deg,var(--glow),var(--gold));color:var(--night);padding:12px 22px;font-weight:700;text-decoration:none;text-align:center;line-height:1.4}
+.btn:focus-visible,a:focus-visible,summary:focus-visible,.fork button:focus-visible{outline:2px solid var(--glow);outline-offset:3px}
+
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(7,20,38,.94);border-top:1px solid var(--hair);
+  padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.sticky div{max-width:1000px;margin-inline:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.sticky p{line-height:1.35;font-size:13px;min-width:0}
+.sticky p b{display:block;font:600 18px/1.3 var(--num);color:var(--glow)}
+.sticky .btn{flex:none;padding:10px 16px}
+footer{font-size:14px;color:var(--soft)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+[hidden]{display:none!important}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.three>*{min-width:0;border-top:1px solid var(--gold);padding-top:12px}
+.three b{font-family:var(--serif);font-size:21px;display:block}
+.three p{font-size:14px;line-height:1.7;color:var(--soft);margin-top:6px}
+@media(max-width:640px){.three{grid-template-columns:1fr}}
+.ideals{display:grid;gap:6px}
+.ideals p{color:var(--soft)}
+.ideals b{color:var(--glow);font-weight:500;margin-right:10px}
+#join canvas.ribbon{top:0;height:100%}
+.video.portrait{aspect-ratio:9/16;width:100%;max-width:340px;justify-self:center}
+.shorts{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,3vw,24px)}
+.shorts>*{min-width:0}
+.short-slot{aspect-ratio:9/16;display:grid;place-items:center;padding:12px;border:1px dashed var(--gold);background:var(--glass);color:var(--glow);font-size:14px;line-height:1.6;text-align:center}
+@media(max-width:640px){.shorts{grid-template-columns:repeat(3,62%);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px}.shorts>*{scroll-snap-align:start}}
+.video .play{text-shadow:0 1px 8px rgba(7,20,38,.8)}
+.shorts .video.portrait{max-width:none}
+.shorts .play{flex-direction:column;align-items:flex-start;gap:8px;font-size:15px}
+.panels{display:grid;gap:24px}
+.panel{min-width:0;display:grid;gap:14px;background:var(--glass);padding:clamp(18px,3vw,28px);border:1px solid var(--hair)}
+.cards{columns:4 200px;column-gap:12px}
+@media(max-width:640px){.cards{columns:2}}
+.zoom{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;break-inside:avoid;margin:0 0 12px}
+.zoom img{width:100%;height:auto}
+.pairs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pairs>*{min-width:0;margin:0}
+@media(max-width:640px){.pairs{grid-template-columns:1fr}}
+#lb{position:fixed;inset:0;z-index:30;background:rgba(7,20,38,.95);display:grid;place-items:center;padding:calc(56px + env(safe-area-inset-top,0px)) 16px 24px}
+#lb img{max-width:100%;max-height:100%;object-fit:contain}
+#lbClose{position:absolute;top:calc(12px + env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px));font:500 15px/1 var(--sans);padding:10px 14px;background:var(--glass);color:var(--coat);border:1px solid var(--gold);cursor:pointer}
+.logo{width:120px}
+</style>
+</head>
+<body>
+
+
+<canvas id="stars" aria-hidden="true"></canvas>
+<header class="hero"><canvas class="ribbon" data-seed="3" aria-hidden="true"></canvas><div class="wrap">
+  <img class="logo" src="assets/logo.png" alt="DR.HAO 白袍人生學院">
+  <p class="eyebrow">White Coat Life Academy · 2026</p>
+  <h1>這一年<br>謝謝你<br><span class="gold">一起走過</span></h1>
+  <p class="orn">◆</p>
+  <p class="sub">2026 白袍人生學院活動回顧</p>
+  <div class="frame" style="width:100%"><figure class="ph r169"><img src="assets/summit-group.jpg" alt="白袍人生學院第二屆高峰年會全體與會者大合照" onerror="this.remove()"><span>第二屆高峰年會全體大合照</span></figure></div>
+  <div class="stats">
+    <div class="stat"><b>10</b><small>場實體活動</small></div>
+    <div class="stat"><b>195</b><small>位夥伴齊聚高峰年會</small></div>
+    <div class="stat"><b>18</b><small>場品牌月直播</small></div>
+    <div class="stat"><b>8</b><small>場篝火計畫</small></div>
+  </div>
+</div></header>
+
+<main>
+<section class="band" aria-labelledby="s-summit"><div class="wrap">
+  <div class="feature">
+    <figure class="ph r43"><img src="https://drhao33.com/images/events/2026-06-27-summit/photo-audience.jpg" loading="lazy" alt="高峰年會現場滿座的醫師、院長與診所經營者" onerror="this.remove()"><span>高峰年會現場</span></figure>
+    <div>
+      <p class="eyebrow">2026.06.27 · 新竹竹北</p>
+      <h2 id="s-summit">第二屆高峰年會<br>復盤過去 × 展望未來</h2>
+      <p class="orn">◆</p>
+      <div class="stats pair">
+        <div class="stat"><b>195</b><small>位出席</small></div>
+        <div class="stat"><b>13</b><small>位講師</small></div>
+        <div class="stat"><b>95.8</b><small>滿意度／100</small></div>
+        <div class="stat"><b>36</b><small>則醫師公開心得</small></div>
+      </div>
+    </div>
+  </div>
+  <a class="video" data-embed="https://player.vimeo.com/video/1216594504?autoplay=1&amp;dnt=1" href="https://vimeo.com/1216594504" target="_blank" rel="noopener">
+    <img src="assets/summit-group.jpg" loading="lazy" alt="" onerror="this.remove()">
+    <span class="play"><span class="tri"></span>2026 高峰年會花絮</span>
+  </a>
+  <div class="shorts" aria-label="直式影片">
+    <a class="video portrait" data-embed="https://player.vimeo.com/video/1226477522?autoplay=1&amp;dnt=1" href="https://vimeo.com/1226477522" target="_blank" rel="noopener">
+      <img src="https://drhao33.com/images/events/2026-06-27-summit/photo-lecturers.jpg" loading="lazy" alt="" onerror="this.remove()">
+      <span class="play"><span class="tri"></span>全體講師專訪</span>
+    </a>
+    <a class="video portrait" data-embed="https://player.vimeo.com/video/1217863012?autoplay=1&amp;dnt=1" href="https://vimeo.com/1217863012" target="_blank" rel="noopener">
+      <img src="https://drhao33.com/images/events/2026-06-27-summit/photo-audience.jpg" loading="lazy" alt="" onerror="this.remove()">
+      <span class="play"><span class="tri"></span>診所導入 AI，要局部試水溫還是 All-in？｜曹皓崴醫師</span>
+    </a>
+    <a class="video portrait" data-embed="https://player.vimeo.com/video/1211592998?autoplay=1&amp;dnt=1" href="https://vimeo.com/1211592998" target="_blank" rel="noopener">
+      <img src="https://drhao33.com/images/events/2026-06-27-summit/photo-group.jpg" loading="lazy" alt="" onerror="this.remove()">
+      <span class="play"><span class="tri"></span>高峰年會夥伴突擊採訪</span>
+    </a>
+  </div>
+</div></section>
+
+<section class="band" aria-labelledby="s-aieo"><div class="wrap">
+  <div class="feature">
+    <div>
+      <p class="eyebrow">2026.05.17</p>
+      <h2 id="s-aieo">AI 時代的數位護城河</h2>
+      <p class="orn">◆</p>
+      <p class="lede">病人問 AI 的時候，
+AI 會說出你的名字嗎？
+這一題，我們帶著夥伴，從邏輯做到實作。</p>
+      <div class="stats pair">
+        <div class="stat"><b>4.92</b><small>滿意度／5</small></div>
+        <div class="stat"><b>56</b><small>位醫師公開寫下心得</small></div>
+      </div>
+    </div>
+    <figure class="ph r43"><img src="assets/moat-group.jpg" loading="lazy" alt="AI 時代的數位護城河全體大合照" onerror="this.remove()"></figure>
+  </div>
+  <a class="video" data-embed="https://www.youtube-nocookie.com/embed/KT5_ndtcWmk?autoplay=1" href="https://www.youtube.com/watch?v=KT5_ndtcWmk" target="_blank" rel="noopener">
+    <img src="https://drhao33.com/images/events/thumbs/2026-05-17-aieo-960.webp" loading="lazy" alt="" onerror="this.remove()">
+    <span class="play"><span class="tri"></span>AIEO 實戰課程影片</span>
+  </a>
+  <div class="shots">
+    <figure class="ph r43"><img src="https://drhao33.com/images/events/thumbs/2026-05-17-aieo-960.webp" loading="lazy" alt="AIEO 5 月場現場全景" onerror="this.remove()"></figure>
+    <figure class="ph r43"><img src="https://drhao33.com/images/events/2026-08-30-aieo/workshop.webp" loading="lazy" alt="夥伴圍桌操作筆電分組實作" onerror="this.remove()"></figure>
+    <figure class="ph r43"><img src="https://drhao33.com/images/events/2026-08-30-aieo/closing.webp" loading="lazy" alt="陳昱傑醫師在課程尾聲向夥伴致意" onerror="this.remove()"></figure>
+  </div>
+</div></section>
+
+<section class="band" aria-labelledby="s-online"><div class="wrap">
+  <div class="head"><p class="eyebrow">Online</p><h2 id="s-online">線上，<span class="gold">我們也在一起</span></h2></div>
+  <div class="panels">
+    <article class="panel">
+      <h3>品牌月</h3>
+      <p>一個月，一位版主，一個題目談透。</p>
+      <div class="cards">
+        <button class="zoom" type="button" data-full="assets/brand/01.jpg" aria-label="放大 1 月圖卡"><img src="assets/brand/01.jpg" loading="lazy" alt="品牌月 1 月圖卡"></button>
+        <button class="zoom" type="button" data-full="assets/brand/02.jpg" aria-label="放大 2 月圖卡"><img src="assets/brand/02.jpg" loading="lazy" alt="品牌月 2 月圖卡"></button>
+        <button class="zoom" type="button" data-full="assets/brand/04.jpg" aria-label="放大 4 月圖卡"><img src="assets/brand/04.jpg" loading="lazy" alt="品牌月 4 月圖卡"></button>
+        <button class="zoom" type="button" data-full="assets/brand/05.jpg" aria-label="放大 5 月圖卡"><img src="assets/brand/05.jpg" loading="lazy" alt="品牌月 5 月圖卡"></button>
+        <button class="zoom" type="button" data-full="assets/brand/06.jpg" aria-label="放大 6 月圖卡"><img src="assets/brand/06.jpg" loading="lazy" alt="品牌月 6 月圖卡"></button>
+        <button class="zoom" type="button" data-full="assets/brand/07.jpg" aria-label="放大 7 月圖卡"><img src="assets/brand/07.jpg" loading="lazy" alt="品牌月 7 月圖卡"></button>
+        <button class="zoom" type="button" data-full="assets/brand/08.jpg" aria-label="放大 8 月圖卡"><img src="assets/brand/08.jpg" loading="lazy" alt="品牌月 8 月圖卡"></button>
+        <button class="zoom" type="button" data-full="assets/brand/09.jpg" aria-label="放大 9 月圖卡"><img src="assets/brand/09.jpg" loading="lazy" alt="品牌月 9 月圖卡"></button>
+        <button class="zoom" type="button" data-full="assets/brand/10.jpg" aria-label="放大 10 月圖卡"><img src="assets/brand/10.jpg" loading="lazy" alt="品牌月 10 月圖卡"></button>
+        <button class="zoom" type="button" data-full="assets/brand/11.jpg" aria-label="放大 11 月圖卡"><img src="assets/brand/11.jpg" loading="lazy" alt="品牌月 11 月圖卡"></button>
+      </div>
+    </article>
+    <article class="panel">
+      <h3>篝火計畫</h3>
+      <p>晚上十點，圍著篝火。<br>每場一位講者，談一件真正做過的事。</p>
+      <div class="pairs">
+        <button class="zoom" type="button" data-full="assets/campfire-01-06.jpg" aria-label="放大篝火計畫 01-06 聚圖卡"><img src="assets/campfire-01-06.jpg" loading="lazy" alt="篝火計畫 01 至 06 聚圖卡"></button>
+        <button class="zoom" type="button" data-full="assets/campfire-07-13.jpg" aria-label="放大篝火計畫 07-13 聚圖卡"><img src="assets/campfire-07-13.jpg" loading="lazy" alt="篝火計畫 07 至 13 聚圖卡"></button>
+      </div>
+    </article>
+  </div>
+</div></section>
+
+<section class="band" id="yours" aria-labelledby="s-yours"><div class="wrap">
+  <div class="head"><p class="eyebrow">Your 2026</p><h2 id="s-yours">你的 2026，<br>點亮了哪幾顆星？</h2><p class="lede">勾起來看看。</p></div>
+  <ol class="track" id="track"></ol>
+  <p class="tally" aria-live="polite">這一年，你點亮了 <b id="count">1</b> 顆星。</p>
+</div></section>
+
+<section class="band" aria-labelledby="s-voices"><div class="wrap">
+  <div class="head"><p class="eyebrow">Voices</p><h2 id="s-voices">夥伴帶走的那句話</h2></div>
+  <div class="voices">
+    <figure><blockquote>暫停不是躺平，是停下來想清楚，我在哪、要往哪、為什麼還要繼續</blockquote><a href="https://www.facebook.com/share/p/1AfMeoSbvq/" target="_blank" rel="noopener">吳政誼醫師｜高峰年會心得</a></figure>
+    <figure><blockquote>讓對的人，被你的價值打動</blockquote><a href="https://www.facebook.com/share/p/1M4RrUPTDo/" target="_blank" rel="noopener">王仁昌醫師｜高峰年會心得</a></figure>
+    <figure><blockquote>「誠實」是 YMYL 最重要的一環</blockquote><a href="https://www.facebook.com/share/p/1DovFLcGJy/?mibextid=wwXIfr" target="_blank" rel="noopener">沈煜庭醫師｜AIEO 心得</a></figure>
+  </div>
+  <p class="slot">【待補】張益豪部落格文章</p>
+</div></section>
+
+<section class="band" id="next" aria-labelledby="s-next"><div class="wrap">
+  <div class="head"><p class="eyebrow">2027</p><h2 id="s-next">明年，<br>我們要去更遠的地方。</h2></div>
+  <div class="next">
+    <article class="big">
+      <p class="eyebrow">2027.06.27（日）</p>
+      <h3>第三屆高峰年會</h3>
+      <p>政大公企中心國際會議廳<br>預計 250–270 位夥伴出席<br>已超過 100 位醫師報名</p>
+      <a class="btn" href="https://www.surveycake.com/s/mWdGq" target="_blank" rel="noopener">報名第三屆高峰年會</a>
+    </article>
+    <ul>
+      <li><strong>深夜十談，再度啟航</strong>12/16 第 21 談，李宜靜中醫師
+        <p class="slot">【待補】2027 深夜十談圖卡</p></li>
+      <li><strong>新的主題月、新的企業參訪</strong>也有夥伴將第一次站上台分享</li>
+    </ul>
+  </div>
+</div></section>
+
+</main>
+
+<div id="lb" hidden role="dialog" aria-modal="true" aria-label="圖卡放大檢視"><button id="lbClose" type="button">關閉</button><img id="lbImg" alt=""></div>
+<footer class="band"><canvas class="ribbon" data-seed="9" style="top:0;height:100%" aria-hidden="true"></canvas><div class="wrap center" style="gap:14px;justify-items:center;text-align:center">
+  <h2>一群人一起打拼，<br><span class="gold">走得更遠。</span></h2>
+  <p class="orn" style="width:100%">◆</p>
+  <p>© 2026 白袍人生學院</p>
+</div></footer>
+
+
+<script>
+
+const STEPS=[
+ ['01/03','醫師自媒體實戰課・台中場','77 老大'],
+ ['02/12','首屆聚光燈舞台','會員線上'],
+ ['03/22','台北康博參訪','企業參訪'],
+ ['03/29','首場腦力風暴大會','寒舍艾美酒店'],
+ ['04/19','醫療溝通術 3.0 台中工作坊','張益豪醫師'],
+ ['05/17','AI 時代的數位護城河','陳昱傑醫師'],
+ ['06/27','第二屆高峰年會','新竹竹北'],
+ ['07/01','民視企業參訪','新北林口'],
+ ['07/01','火星計劃',''],
+ ['07/11','跨界腦力風暴大會','寒舍艾美酒店'],
+ ['08/30','AIEO 小班制第二梯','限額 30 人'],
+ ['10/25','功能醫學專業班','主辦：大象醫師周維薪｜協辦：白袍人生學院'],
+ ['11/28','感謝祭晚宴','台北南港'],
+ ['全年','品牌月','線上直播'],
+ ['全年','篝火計畫','線上直播'],
+];
+const track=document.getElementById('track');
+track.innerHTML=STEPS.map((s,i)=>`<li><label class="step" for="st${i}"><time>${s[0]}</time><span><strong>${s[1]}</strong>${s[2]?`<small>${s[2]}</small>`:''}</span><input type="checkbox" id="st${i}"><span class="box" aria-hidden="true">✦</span></label></li>`).join('')
+ +`<li><label class="step locked" for="stLast"><time>全年</time><span><strong>會員群組</strong></span><input type="checkbox" id="stLast" checked disabled><span class="box" aria-hidden="true">✦</span></label></li>`;
+const update=()=>{document.getElementById('count').textContent=track.querySelectorAll('input:checked').length};
+track.addEventListener('change',update);
+
+document.querySelectorAll('.video').forEach(v=>v.addEventListener('click',e=>{
+  if(window.self!==window.top||location.protocol==='file:')return;
+  e.preventDefault();
+  const f=document.createElement('iframe');
+  f.src=v.dataset.embed;f.title='影片';f.allow='autoplay; fullscreen; encrypted-media; picture-in-picture';f.allowFullscreen=true;
+  const box=document.createElement('div');box.className=v.className;box.append(f);v.replaceWith(box);
+}));
+
+function rng(seed){return()=>(seed=(seed*16807)%2147483647)/2147483647}
+function drawRibbons(c){
+  const r=rng(+c.dataset.seed*7919+11),d=Math.min(devicePixelRatio||1,2),W=c.clientWidth,H=c.clientHeight;
+  c.width=W*d;c.height=H*d;const x=c.getContext('2d');x.scale(d,d);x.globalCompositeOperation='lighter';
+  const sets=[[-.1,.82,.25,.55,.7,1.02,1.1,.72,'224,162,53'],[1.1,.02,.82,.34,.62,.02,.42,.0,'246,221,166'],[-.1,.3,.2,.62,.3,.02,.5,.0,'94,140,181']];
+  sets.forEach(a=>{for(let i=0;i<46;i++){const o=(i-23)/23,sp=H*.05*o,al=.16*(1-Math.abs(o))+.03;
+    x.strokeStyle=`rgba(${a[8]},${al})`;x.lineWidth=i%9?1:1.8;x.beginPath();x.moveTo(a[0]*W,a[1]*H+sp*.3);
+    x.bezierCurveTo(a[2]*W,a[3]*H+sp,a[4]*W,a[5]*H-sp,a[6]*W,a[7]*H+sp*.5);x.stroke()}});
+  for(let i=0;i<70;i++){x.fillStyle=`rgba(246,221,166,${.2+r()*.7})`;x.beginPath();x.arc(r()*W,(r()<.5?.72+r()*.28:r()*.3)*H,r()*1.5+.3,0,7);x.fill()}
+}
+function sparkle(x,X,Y,R,a){x.fillStyle=`rgba(246,221,166,${a})`;x.beginPath();
+  for(let i=0;i<8;i++){const t=i*Math.PI/4,l=i%2?R*.12:R;x.lineTo(X+Math.cos(t)*l,Y+Math.sin(t)*l)}x.closePath();x.fill()}
+function sky(){
+  const c=document.getElementById('stars'),x=c.getContext('2d'),r=rng(4242);let W,H,S=[];
+  const size=()=>{const d=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;c.width=W*d;c.height=H*d;x.setTransform(d,0,0,d,0,0)};
+  for(let i=0;i<90;i++){const b=r()<.12;S.push({u:r(),v:r(),R:b?5+r()*8:r()*1.3+.4,p:r()*6.3,b})};
+  const paint=t=>{x.clearRect(0,0,W,H);const g=x.createRadialGradient(W*.85,0,0,W*.85,0,Math.max(W,H)*.9);g.addColorStop(0,'rgba(26,61,99,.75)');g.addColorStop(1,'rgba(7,20,38,0)');x.fillStyle=g;x.fillRect(0,0,W,H);
+    S.forEach(s=>{const a=.35+.5*Math.abs(Math.sin(s.p+t/1800));s.b?sparkle(x,s.u*W,s.v*H,s.R,a):(x.fillStyle=`rgba(251,249,243,${a})`,x.beginPath(),x.arc(s.u*W,s.v*H,s.R,0,7),x.fill())})};
+  size();addEventListener('resize',()=>{size();paint(0)});paint(0);
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){let l=0;const loop=t=>{if(t-l>120&&!document.hidden){paint(t);l=t}requestAnimationFrame(loop)};requestAnimationFrame(loop)}
+}
+sky();document.querySelectorAll('canvas.ribbon').forEach(drawRibbons);
+const lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg');
+const closeLb=()=>{lb.hidden=true;lbImg.removeAttribute('src')};
+document.querySelectorAll('.zoom').forEach(b=>b.addEventListener('click',()=>{lbImg.src=b.dataset.full;lbImg.alt=b.querySelector('img').alt;lb.hidden=false;document.getElementById('lbClose').focus()}));
+lb.addEventListener('click',e=>{if(e.target!==lbImg)closeLb()});
+addEventListener('keydown',e=>{if(e.key==='Escape')closeLb()});
+</script>
+
+</body>
+</html>
