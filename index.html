@@ -220,6 +220,36 @@ footer{font-size:14px;color:var(--soft)}
 .cards .zoom{margin:0;aspect-ratio:3/2;background:rgba(7,20,38,.55);border:1px solid var(--hair);padding:8px}
 .cards .zoom img{width:100%;height:100%;object-fit:contain}
 @media(max-width:640px){.cards{columns:auto;grid-template-columns:1fr;gap:12px}}
+.moments{display:grid;grid-template-columns:repeat(3,1fr);gap:32px 20px}
+.moment{min-width:0;display:grid;gap:4px;align-content:start;padding:0;border:0;background:none;color:var(--coat);text-align:left;cursor:zoom-in;font:inherit}
+.m-photo{position:relative;display:block;aspect-ratio:4/3;overflow:hidden;border:1px solid var(--hair);margin-bottom:8px}
+.m-photo img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease}
+.moment:hover .m-photo img{transform:scale(1.03)}
+.m-count{position:absolute;right:8px;bottom:8px;background:rgba(7,20,38,.82);color:var(--glow);font-size:12px;line-height:1;padding:6px 8px}
+.m-date{font:600 13px/1.4 var(--num);color:var(--gold);font-variant-numeric:tabular-nums}
+.m-name{font-family:var(--serif);font-weight:700;font-size:18px;line-height:1.45;text-wrap:balance}
+.moment:focus-visible{outline:2px solid var(--glow);outline-offset:4px}
+@media(max-width:640px){.moments{grid-template-columns:repeat(2,1fr);gap:24px 12px}.m-name{font-size:16px}.moment:last-child{grid-column:1/-1}.moment:last-child .m-photo{aspect-ratio:16/9}}
+.next2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.next2>*{min-width:0}
+.n-card{background:var(--glass);border:1px solid var(--hair);padding:clamp(22px,3vw,32px)}
+.n-summit{display:grid;gap:14px;align-content:center;justify-items:start}
+.n-summit h3{font-size:clamp(26px,3.4vw,34px)}
+.n-facts{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%;margin-block:6px}
+.n-facts b{display:block;font:600 clamp(28px,3.4vw,36px)/1.15 var(--num);color:var(--glow)}
+.n-facts span{font-size:14px;color:var(--soft)}
+.n-talk{display:grid;grid-template-columns:minmax(0,44%) minmax(0,1fr);gap:20px;align-items:center}
+.n-talk .zoom{margin:0}
+.n-talk>div{display:grid;gap:10px}
+.n-talk h3{font-size:22px}
+.n-talk p:last-child{color:var(--soft);font-size:15px}
+.n-more{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 28px;color:var(--soft);text-align:center}
+.n-more span::before{content:"✦";color:var(--gold);margin-right:8px}
+@media(max-width:800px){.next2{grid-template-columns:1fr}}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;background:var(--glass);color:var(--coat);border:1px solid var(--gold);font-size:20px;line-height:1;cursor:pointer}
+#lbPrev{left:max(10px,env(safe-area-inset-left,0px))}
+#lbNext{right:max(10px,env(safe-area-inset-right,0px))}
+#lbInfo{position:absolute;left:0;right:0;bottom:calc(10px + env(safe-area-inset-bottom,0px));text-align:center;font-size:14px;color:var(--soft);pointer-events:none}
 </style>
 </head>
 <body>
@@ -291,60 +321,51 @@ AI 會說出你的名字嗎？
 <section class="band" id="moments" aria-labelledby="s-moments"><div class="wrap">
   <div class="head"><p class="eyebrow">Moments</p><h2 id="s-moments">今年的<span class="gold">每一個現場</span></h2></div>
   <div class="moments">
-    <article class="moment">
-      <div class="m-main"><button class="zoom" type="button" data-full="assets/moments/0103-1.jpg" aria-label="放大醫師自媒體實戰課台中場照片 1"><img src="assets/moments/0103-1.jpg" loading="lazy" alt="醫師自媒體實戰課台中場照片 1"></button></div>
-      <div class="m-thumbs"><button class="zoom" type="button" data-full="assets/moments/0103-2.jpg" aria-label="放大醫師自媒體實戰課台中場照片 2"><img src="assets/moments/0103-2.jpg" loading="lazy" alt="醫師自媒體實戰課台中場照片 2"></button></div>
-      <p class="m-date">01/03</p>
-      <h3>醫師自媒體實戰課台中場</h3>
-    </article>
-    <article class="moment">
-      <div class="m-main"><button class="zoom" type="button" data-full="assets/moments/0322-1.jpg" aria-label="放大台北康博參訪照片 1"><img src="assets/moments/0322-1.jpg" loading="lazy" alt="台北康博參訪照片 1"></button></div>
-      
-      <p class="m-date">03/22</p>
-      <h3>台北康博參訪</h3>
-    </article>
-    <article class="moment">
-      <div class="m-main"><button class="zoom" type="button" data-full="assets/moments/0329-1.jpg" aria-label="放大首場腦力風暴大會照片 1"><img src="assets/moments/0329-1.jpg" loading="lazy" alt="首場腦力風暴大會照片 1"></button></div>
-      <div class="m-thumbs"><button class="zoom" type="button" data-full="assets/moments/0329-2.jpg" aria-label="放大首場腦力風暴大會照片 2"><img src="assets/moments/0329-2.jpg" loading="lazy" alt="首場腦力風暴大會照片 2"></button></div>
-      <p class="m-date">03/29</p>
-      <h3>首場腦力風暴大會</h3>
-    </article>
-    <article class="moment">
-      <div class="m-main"><button class="zoom" type="button" data-full="assets/moments/0419-1.jpg" aria-label="放大系統化的實戰醫療溝通術 3.0照片 1"><img src="assets/moments/0419-1.jpg" loading="lazy" alt="系統化的實戰醫療溝通術 3.0照片 1"></button></div>
-      <div class="m-thumbs"><button class="zoom" type="button" data-full="assets/moments/0419-2.jpg" aria-label="放大系統化的實戰醫療溝通術 3.0照片 2"><img src="assets/moments/0419-2.jpg" loading="lazy" alt="系統化的實戰醫療溝通術 3.0照片 2"></button></div>
-      <p class="m-date">04/19</p>
-      <h3>系統化的實戰醫療溝通術 3.0</h3>
-    </article>
-    <article class="moment">
-      <div class="m-main"><button class="zoom" type="button" data-full="assets/moments/0701a-1.jpg" aria-label="放大民視企業參訪照片 1"><img src="assets/moments/0701a-1.jpg" loading="lazy" alt="民視企業參訪照片 1"></button></div>
-      <div class="m-thumbs"><button class="zoom" type="button" data-full="assets/moments/0701a-2.jpg" aria-label="放大民視企業參訪照片 2"><img src="assets/moments/0701a-2.jpg" loading="lazy" alt="民視企業參訪照片 2"></button><button class="zoom" type="button" data-full="assets/moments/0701a-3.jpg" aria-label="放大民視企業參訪照片 3"><img src="assets/moments/0701a-3.jpg" loading="lazy" alt="民視企業參訪照片 3"></button></div>
-      <p class="m-date">07/01</p>
-      <h3>民視企業參訪</h3>
-    </article>
-    <article class="moment">
-      <div class="m-main"><button class="zoom" type="button" data-full="assets/moments/0701b-1.jpg" aria-label="放大阿金火星計劃照片 1"><img src="assets/moments/0701b-1.jpg" loading="lazy" alt="阿金火星計劃照片 1"></button></div>
-      <div class="m-thumbs"><button class="zoom" type="button" data-full="assets/moments/0701b-2.jpg" aria-label="放大阿金火星計劃照片 2"><img src="assets/moments/0701b-2.jpg" loading="lazy" alt="阿金火星計劃照片 2"></button></div>
-      <p class="m-date">07/01</p>
-      <h3>阿金火星計劃</h3>
-    </article>
-    <article class="moment">
-      <div class="m-main"><button class="zoom" type="button" data-full="assets/moments/0711-1.jpg" aria-label="放大院長腦力風暴照片 1"><img src="assets/moments/0711-1.jpg" loading="lazy" alt="院長腦力風暴照片 1"></button></div>
-      
-      <p class="m-date">07/11</p>
-      <h3>院長腦力風暴</h3>
-    </article>
-    <article class="moment">
-      <div class="m-main"><button class="zoom" type="button" data-full="assets/moments/0830-1.jpg" aria-label="放大AI 時代的數位護城河 小班制照片 1"><img src="assets/moments/0830-1.jpg" loading="lazy" alt="AI 時代的數位護城河 小班制照片 1"></button></div>
-      <div class="m-thumbs"><button class="zoom" type="button" data-full="assets/moments/0830-2.jpg" aria-label="放大AI 時代的數位護城河 小班制照片 2"><img src="assets/moments/0830-2.jpg" loading="lazy" alt="AI 時代的數位護城河 小班制照片 2"></button></div>
-      <p class="m-date">08/30</p>
-      <h3>AI 時代的數位護城河 小班制</h3>
-    </article>
-    <article class="moment">
-      <div class="m-main"><button class="zoom" type="button" data-full="assets/moments/1025-1.jpg" aria-label="放大功能醫學專業班照片 1"><img src="assets/moments/1025-1.jpg" loading="lazy" alt="功能醫學專業班照片 1"></button></div>
-      <div class="m-thumbs"><button class="zoom" type="button" data-full="assets/moments/1025-2.jpg" aria-label="放大功能醫學專業班照片 2"><img src="assets/moments/1025-2.jpg" loading="lazy" alt="功能醫學專業班照片 2"></button></div>
-      <p class="m-date">10/25</p>
-      <h3>功能醫學專業班</h3>
-    </article>
+    <button class="moment" type="button" data-photos='["assets/moments/0103-1.jpg", "assets/moments/0103-2.jpg"]' data-name="醫師自媒體實戰課台中場" aria-label="查看醫師自媒體實戰課台中場照片，共 2 張">
+      <span class="m-photo"><img src="assets/moments/0103-1.jpg" loading="lazy" alt="醫師自媒體實戰課台中場"><span class="m-count">2 張</span></span>
+      <span class="m-date">01/03</span>
+      <span class="m-name">醫師自媒體實戰課台中場</span>
+    </button>
+    <button class="moment" type="button" data-photos='["assets/moments/0322-1.jpg"]' data-name="台北康博參訪" aria-label="查看台北康博參訪照片，共 1 張">
+      <span class="m-photo"><img src="assets/moments/0322-1.jpg" loading="lazy" alt="台北康博參訪"></span>
+      <span class="m-date">03/22</span>
+      <span class="m-name">台北康博參訪</span>
+    </button>
+    <button class="moment" type="button" data-photos='["assets/moments/0329-1.jpg", "assets/moments/0329-2.jpg"]' data-name="首場腦力風暴大會" aria-label="查看首場腦力風暴大會照片，共 2 張">
+      <span class="m-photo"><img src="assets/moments/0329-1.jpg" loading="lazy" alt="首場腦力風暴大會"><span class="m-count">2 張</span></span>
+      <span class="m-date">03/29</span>
+      <span class="m-name">首場腦力風暴大會</span>
+    </button>
+    <button class="moment" type="button" data-photos='["assets/moments/0419-1.jpg", "assets/moments/0419-2.jpg"]' data-name="系統化的實戰醫療溝通術 3.0" aria-label="查看系統化的實戰醫療溝通術 3.0照片，共 2 張">
+      <span class="m-photo"><img src="assets/moments/0419-1.jpg" loading="lazy" alt="系統化的實戰醫療溝通術 3.0"><span class="m-count">2 張</span></span>
+      <span class="m-date">04/19</span>
+      <span class="m-name">系統化的實戰醫療溝通術 3.0</span>
+    </button>
+    <button class="moment" type="button" data-photos='["assets/moments/0701a-1.jpg", "assets/moments/0701a-2.jpg", "assets/moments/0701a-3.jpg"]' data-name="民視企業參訪" aria-label="查看民視企業參訪照片，共 3 張">
+      <span class="m-photo"><img src="assets/moments/0701a-1.jpg" loading="lazy" alt="民視企業參訪"><span class="m-count">3 張</span></span>
+      <span class="m-date">07/01</span>
+      <span class="m-name">民視企業參訪</span>
+    </button>
+    <button class="moment" type="button" data-photos='["assets/moments/0701b-1.jpg", "assets/moments/0701b-2.jpg"]' data-name="阿金火星計劃" aria-label="查看阿金火星計劃照片，共 2 張">
+      <span class="m-photo"><img src="assets/moments/0701b-1.jpg" loading="lazy" alt="阿金火星計劃"><span class="m-count">2 張</span></span>
+      <span class="m-date">07/01</span>
+      <span class="m-name">阿金火星計劃</span>
+    </button>
+    <button class="moment" type="button" data-photos='["assets/moments/0711-1.jpg"]' data-name="院長腦力風暴" aria-label="查看院長腦力風暴照片，共 1 張">
+      <span class="m-photo"><img src="assets/moments/0711-1.jpg" loading="lazy" alt="院長腦力風暴"></span>
+      <span class="m-date">07/11</span>
+      <span class="m-name">院長腦力風暴</span>
+    </button>
+    <button class="moment" type="button" data-photos='["assets/moments/0830-1.jpg", "assets/moments/0830-2.jpg"]' data-name="AI 時代的數位護城河 小班制" aria-label="查看AI 時代的數位護城河 小班制照片，共 2 張">
+      <span class="m-photo"><img src="assets/moments/0830-1.jpg" loading="lazy" alt="AI 時代的數位護城河 小班制"><span class="m-count">2 張</span></span>
+      <span class="m-date">08/30</span>
+      <span class="m-name">AI 時代的數位護城河 小班制</span>
+    </button>
+    <button class="moment" type="button" data-photos='["assets/moments/1025-1.jpg", "assets/moments/1025-2.jpg"]' data-name="功能醫學專業班" aria-label="查看功能醫學專業班照片，共 2 張">
+      <span class="m-photo"><img src="assets/moments/1025-1.jpg" loading="lazy" alt="功能醫學專業班"><span class="m-count">2 張</span></span>
+      <span class="m-date">10/25</span>
+      <span class="m-name">功能醫學專業班</span>
+    </button>
   </div>
 </div></section>
 
@@ -394,25 +415,33 @@ AI 會說出你的名字嗎？
 </div></section>
 
 <section class="band" id="next" aria-labelledby="s-next"><div class="wrap">
-  <div class="head"><p class="eyebrow">2027</p><h2 id="s-next">明年，<br>我們要去更遠的地方。</h2></div>
-  <div class="next">
-    <article class="big">
+  <div class="head center"><p class="eyebrow">2027</p><h2 id="s-next">明年，<br>我們要去<span class="gold">更遠的地方</span></h2><p class="orn" style="width:100%">◆</p></div>
+  <div class="next2">
+    <article class="n-card n-summit">
       <p class="eyebrow">2027.06.27（日）</p>
       <h3>第三屆高峰年會</h3>
-      <p>政大公企中心國際會議廳<br>預計 250–270 位夥伴出席<br>已超過 100 位醫師報名</p>
+      <p>政大公企中心國際會議廳</p>
+      <ul class="n-facts">
+        <li><b>250–270</b><span>位預計出席</span></li>
+        <li><b>100+</b><span>位醫師已報名</span></li>
+      </ul>
       <a class="btn" href="https://www.surveycake.com/s/mWdGq" target="_blank" rel="noopener">報名第三屆高峰年會</a>
     </article>
-    <ul>
-      <li><strong>深夜十談，再度啟航</strong>12/16 第 21 談，李宜靜中醫師
-        <div class="poster"><button class="zoom" type="button" data-full="assets/late-night-2027.jpg" aria-label="放大 2027 深夜十談圖卡"><img src="assets/late-night-2027.jpg" loading="lazy" alt="深夜十談第 21 至 26 談圖卡"></button></div></li>
-      <li><strong>新的主題月、新的企業參訪</strong>也有夥伴將第一次站上台分享</li>
-    </ul>
+    <article class="n-card n-talk">
+      <button class="zoom" type="button" data-full="assets/late-night-2027.jpg" aria-label="放大 2027 深夜十談圖卡"><img src="assets/late-night-2027.jpg" loading="lazy" alt="深夜十談第 21 至 26 談圖卡"></button>
+      <div>
+        <p class="eyebrow">2026.12 – 2027.05</p>
+        <h3>深夜十談，再度啟航</h3>
+        <p>第 21 至 26 談<br>12/16 由李宜靜中醫師開場</p>
+      </div>
+    </article>
   </div>
+  <p class="n-more"><span>新的主題月</span><span>新的企業參訪</span><span>夥伴第一次站上台</span></p>
 </div></section>
 
 </main>
 
-<div id="lb" hidden role="dialog" aria-modal="true" aria-label="圖卡放大檢視"><button id="lbClose" type="button">關閉</button><img id="lbImg" alt=""></div>
+<div id="lb" hidden role="dialog" aria-modal="true" aria-label="圖卡放大檢視"><button id="lbClose" type="button">關閉</button><button id="lbPrev" class="lb-nav" type="button" aria-label="上一張">‹</button><img id="lbImg" alt=""><button id="lbNext" class="lb-nav" type="button" aria-label="下一張">›</button><p id="lbInfo"></p></div>
 <footer class="band"><canvas class="ribbon" data-seed="9" style="top:0;height:100%" aria-hidden="true"></canvas><div class="wrap center" style="gap:14px;justify-items:center;text-align:center">
   <h2>一群人一起打拼，<br><span class="gold">走得更遠。</span></h2>
   <p class="orn" style="width:100%">◆</p>
@@ -468,11 +497,18 @@ function sky(){
   if(!matchMedia('(prefers-reduced-motion: reduce)').matches){let l=0;const loop=t=>{if(t-l>120&&!document.hidden){paint(t);l=t}requestAnimationFrame(loop)};requestAnimationFrame(loop)}
 }
 sky();document.querySelectorAll('canvas.ribbon').forEach(drawRibbons);
-const lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg');
+const lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),lbPrev=document.getElementById('lbPrev'),lbNext=document.getElementById('lbNext'),lbInfo=document.getElementById('lbInfo');
+let lbList=[],lbAt=0,lbName='';
+function showLb(){lbImg.src=lbList[lbAt];lbImg.alt=lbName;const many=lbList.length>1;lbPrev.hidden=!many;lbNext.hidden=!many;lbInfo.textContent=many?`${lbName}　${lbAt+1}／${lbList.length}`:lbName}
+function openLb(list,name){lbList=list;lbAt=0;lbName=name;showLb();lb.hidden=false;document.getElementById('lbClose').focus()}
 const closeLb=()=>{lb.hidden=true;lbImg.removeAttribute('src')};
-document.querySelectorAll('.zoom').forEach(b=>b.addEventListener('click',()=>{lbImg.src=b.dataset.full;lbImg.alt=b.querySelector('img').alt;lb.hidden=false;document.getElementById('lbClose').focus()}));
+const step=d=>{lbAt=(lbAt+d+lbList.length)%lbList.length;showLb()};
+document.querySelectorAll('.zoom').forEach(b=>b.addEventListener('click',()=>openLb([b.dataset.full],b.querySelector('img').alt)));
+document.querySelectorAll('.moment').forEach(b=>b.addEventListener('click',()=>openLb(JSON.parse(b.dataset.photos),b.dataset.name)));
+lbPrev.addEventListener('click',e=>{e.stopPropagation();step(-1)});
+lbNext.addEventListener('click',e=>{e.stopPropagation();step(1)});
 lb.addEventListener('click',e=>{if(e.target!==lbImg)closeLb()});
-addEventListener('keydown',e=>{if(e.key==='Escape')closeLb()});
+addEventListener('keydown',e=>{if(lb.hidden)return;if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')step(-1);if(e.key==='ArrowRight')step(1)});
 </script>
 
 </body>
