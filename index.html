@@ -254,7 +254,7 @@ footer{font-size:14px;color:var(--soft)}
 .solo .zoom{margin:0}
 .next3{display:grid;gap:20px}
 .next3>*{min-width:0}
-.n-talk{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:clamp(24px,4vw,48px);align-items:center;border-color:var(--gold);box-shadow:0 0 40px rgba(224,162,53,.18)}
+.n-talk{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:clamp(24px,4vw,48px);align-items:center;border-color:var(--gold);box-shadow:0 0 40px rgba(224,162,53,.18)}
 .n-body{display:grid;gap:14px;justify-items:start}
 .n-talk h3{font-size:clamp(30px,4.4vw,46px);line-height:1.25}
 .n-big{display:flex;align-items:baseline;gap:8px}
@@ -264,7 +264,7 @@ footer{font-size:14px;color:var(--soft)}
 .n-summit{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) auto;gap:24px;align-items:center}
 .n-summit h3{font-size:clamp(24px,3vw,30px);margin-top:6px}
 .n-summit .n-facts{margin:0}
-@media(max-width:800px){.n-talk{grid-template-columns:1fr}.n-talk .zoom{max-width:420px;justify-self:center}.n-summit{grid-template-columns:1fr;justify-items:start}}
+@media(max-width:800px){.n-talk{grid-template-columns:1fr}.n-talk .zoom{max-width:520px;justify-self:center}.n-summit{grid-template-columns:1fr;justify-items:start}}
 .n-more{font-family:var(--serif);font-size:18px;color:var(--coat)}
 .motto{font:700 clamp(20px,3vw,26px)/1.5 var(--serif);letter-spacing:.12em;color:var(--glow)}
 #music{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:25;display:flex;align-items:center;gap:8px;padding:10px 14px;background:rgba(7,20,38,.9);color:var(--coat);border:1px solid var(--gold);border-radius:999px;font:500 14px/1 var(--sans);cursor:pointer;box-shadow:0 0 22px rgba(224,162,53,.25)}
@@ -282,6 +282,7 @@ footer{font-size:14px;color:var(--soft)}
 .v-card figcaption span{font-size:13px;color:var(--soft)}
 .v-card figcaption a{font-size:13px;color:var(--soft);margin-top:6px;justify-self:start}
 @media(max-width:800px){.voices{grid-template-columns:1fr}}
+.n-facts b{white-space:nowrap}
 </style>
 </head>
 <body>
@@ -492,7 +493,7 @@ AI 會說出你的名字嗎？
 <audio id="bgm" src="assets/music.m4a" loop autoplay preload="auto"></audio>
 <button id="music" type="button" aria-pressed="false" aria-label="播放背景音樂"><span class="ic" aria-hidden="true">▶</span><span class="tx">播放音樂</span></button>
 <footer class="band"><canvas class="ribbon" data-seed="9" style="top:0;height:100%" aria-hidden="true"></canvas><div class="wrap center" style="gap:14px;justify-items:center;text-align:center">
-  <h2>一群人一起打拼，<br><span class="gold">走得更遠。</span></h2>
+  <h2>一群人一起打拼<br><span class="gold">走得更遠</span></h2>
   <p class="orn" style="width:100%">◆</p>
   <p class="motto">多元 × 斜槓 × 人生</p>
   <p>© 2026 白袍人生學院</p>
