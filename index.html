@@ -566,8 +566,8 @@ const STEPS=[
  ['08/30','AI 時代的數位護城河 小班制','限額 30 人'],
  ['10/25','功能醫學專業班','主辦：大象醫師周維薪｜協辦：白袍人生學院'],
  ['11/28','感謝祭晚宴','台北南港'],
- ['全年','品牌月','線上直播'],
- ['全年','篝火計畫','線上直播'],
+ ['全年','主題月系列直播','線上直播'],
+ ['全年','篝火系列直播課程','線上直播'],
 ];
 const track=document.getElementById('track');
 track.innerHTML=STEPS.map((s,i)=>`<li><label class="step" for="st${i}"><time>${s[0]}</time><span><strong>${s[1]}</strong>${s[2]?`<small>${s[2]}</small>`:''}</span><input type="checkbox" id="st${i}"><span class="box" aria-hidden="true">✦</span></label></li>`).join('')
@@ -602,14 +602,17 @@ function sheetSteps(text){
     const d=isoDate(r[2]);if(!d||d<'2026-01-01'||d>LAST_DAY)return;
     const name=(r[1]||'').replace(/\s+/g,' ').trim();if(!name)return;
     const online=/線上/.test(r[7]||'');
-    if(/品牌月/.test(name)){items.push([d,'品牌月','線上']);stats.brand++;return}
-    if(/篝火/.test(name))stats.camp++;
+    if(/品牌月/.test(name)){stats.brand++;return}
+    if(/篝火/.test(name)){stats.camp++;return}
     if(!online)stats.phys++;
     const where=online?'線上':(r[6]||'');
     items.push([d,name,/通知|待定|^$/.test(where)?'':where]);
   });
   EXTRA.forEach(e=>items.push(e));
-  return items.sort((a,b)=>a[0]<b[0]?-1:a[0]>b[0]?1:0).map(([d,n,s])=>[d.slice(5).replace('-','/'),n,s]);
+  const list=items.sort((a,b)=>a[0]<b[0]?-1:a[0]>b[0]?1:0).map(([d,n,s])=>[d.slice(5).replace('-','/'),n,s]);
+  if(stats.brand)list.push(['全年','主題月系列直播','線上']);
+  if(stats.camp)list.push(['全年','篝火系列直播課程','線上']);
+  return list;
 }
 function renderSteps(list){
   track.innerHTML=list.map((s,i)=>`<li><label class="step" for="st${i}"><time>${s[0]}</time><span><strong>${esc(s[1])}</strong>${s[2]?`<small>${esc(s[2])}</small>`:''}</span><input type="checkbox" id="st${i}"><span class="box" aria-hidden="true">✦</span></label></li>`).join('')
