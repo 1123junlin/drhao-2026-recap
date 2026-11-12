@@ -567,7 +567,7 @@ const STEPS=[
  ['10/25','功能醫學專業班','主辦：大象醫師周維薪｜協辦：白袍人生學院'],
  ['11/28','感謝祭晚宴','台北南港'],
  ['全年','主題月系列直播','線上直播'],
- ['全年','篝火系列直播課程','線上直播'],
+ ['全年','篝火系列直播','線上直播'],
 ];
 const track=document.getElementById('track');
 track.innerHTML=STEPS.map((s,i)=>`<li><label class="step" for="st${i}"><time>${s[0]}</time><span><strong>${s[1]}</strong>${s[2]?`<small>${s[2]}</small>`:''}</span><input type="checkbox" id="st${i}"><span class="box" aria-hidden="true">✦</span></label></li>`).join('')
@@ -611,7 +611,7 @@ function sheetSteps(text){
   EXTRA.forEach(e=>items.push(e));
   const list=items.sort((a,b)=>a[0]<b[0]?-1:a[0]>b[0]?1:0).map(([d,n,s])=>[d.slice(5).replace('-','/'),n,s]);
   if(stats.brand)list.push(['全年','主題月系列直播','線上']);
-  if(stats.camp)list.push(['全年','篝火系列直播課程','線上']);
+  if(stats.camp)list.push(['全年','篝火系列直播','線上']);
   return list;
 }
 function renderSteps(list){
