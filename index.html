@@ -324,14 +324,20 @@ footer{font-size:14px;color:var(--soft)}
   <p class="sub">2026 白袍人生學院活動回顧</p>
   <div class="frame" style="width:100%"><figure class="ph r169"><img src="assets/hero.jpg" alt="白袍人生學院 2026 大合照" onerror="this.remove()"></figure></div>
   <div class="stats">
-    <div class="stat"><b>12</b><small>場實體活動</small></div>
+    <div class="stat"><b id="stPhys">12</b><small>場實體活動</small></div>
     <div class="stat"><b>195</b><small>位夥伴齊聚高峰年會</small></div>
-    <div class="stat"><b>18</b><small>場品牌月直播</small></div>
-    <div class="stat"><b>8</b><small>場篝火計畫</small></div>
+    <div class="stat"><b id="stBrand">18</b><small>場品牌月直播</small></div>
+    <div class="stat"><b id="stCamp">8</b><small>場篝火計畫</small></div>
   </div>
 </div></header>
 
 <main>
+<section class="band" id="yours" aria-labelledby="s-yours"><div class="wrap">
+  <div class="head"><p class="eyebrow">Your 2026</p><h2 id="s-yours">你的 2026，<br>點亮了哪幾顆星？</h2><p class="lede">勾起來看看。</p></div>
+  <ol class="track" id="track"></ol>
+  <p class="tally" aria-live="polite">這一年，你點亮了 <b id="count">1</b> 顆星。</p>
+</div></section>
+
 <section class="band" aria-labelledby="s-summit"><div class="wrap">
   <div class="feature">
     <figure class="ph r43"><img src="assets/summit.jpg" loading="lazy" alt="第二屆高峰年會大合照"></figure>
@@ -464,12 +470,6 @@ AI 會說出你的名字嗎？
   </div>
 </div></section>
 
-<section class="band" id="yours" aria-labelledby="s-yours"><div class="wrap">
-  <div class="head"><p class="eyebrow">Your 2026</p><h2 id="s-yours">你的 2026，<br>點亮了哪幾顆星？</h2><p class="lede">勾起來看看。</p></div>
-  <ol class="track" id="track"></ol>
-  <p class="tally" aria-live="polite">這一年，你點亮了 <b id="count">1</b> 顆星。</p>
-</div></section>
-
 <section class="band" aria-labelledby="s-voices"><div class="wrap">
   <div class="head"><p class="eyebrow">Voices</p><h2 id="s-voices">夥伴帶走的<span class="gold">那句話</span></h2></div>
   <div class="voices">
@@ -581,6 +581,47 @@ let reg=store.get('drhao26-reg');const shown={5:false,10:false};
 const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const litEvents=()=>[...track.querySelectorAll('input:checked')].map(i=>i.closest('label').querySelector('strong').textContent);
 const starCount=()=>track.querySelectorAll('input:checked').length;
+// ── 從活動試算表讀取 2026 活動（讀取失敗時保留上方預設清單）──
+const SHEET_CSV='https://docs.google.com/spreadsheets/d/1DtKZiuGA5bN8f7gABgKSLfFMOUSL3gdKfmUjcUdkh2Q/export?format=csv&gid=0';
+const EXTRA=[['2026-05-03','一分鐘精準讀心',''],['2026-10-25','功能醫學專業班','主辦：大象醫師周維薪｜協辦：白袍人生學院']];
+const LAST_DAY='2026-11-28';
+let stats=null;
+const CN=['','一','二','三','四','五','六','七','八','九','十','十一','十二'];
+function csvRows(text){const rows=[];let row=[],cur='',q=false;
+  for(let i=0;i<text.length;i++){const c=text[i];
+    if(q){if(c==='"'){if(text[i+1]==='"'){cur+='"';i++}else q=false}else cur+=c}
+    else if(c==='"')q=true;else if(c===','){row.push(cur.trim());cur=''}
+    else if(c==='\n'||c==='\r'){if(c==='\r'&&text[i+1]==='\n')i++;row.push(cur.trim());rows.push(row);row=[];cur=''}
+    else cur+=c}
+  if(cur||row.length){row.push(cur.trim());rows.push(row)}
+  return rows.filter(r=>r.some(v=>v))}
+function isoDate(s){const m=(s||'').match(/(\d{4})[-/](\d{1,2})[-/](\d{1,2})/);return m?`${m[1]}-${m[2].padStart(2,'0')}-${m[3].padStart(2,'0')}`:''}
+function sheetSteps(text){
+  const items=[];stats={phys:EXTRA.length,brand:0,camp:0};
+  csvRows(text).slice(1).forEach(r=>{
+    const d=isoDate(r[2]);if(!d||d<'2026-01-01'||d>LAST_DAY)return;
+    const name=(r[1]||'').replace(/\s+/g,' ').trim();if(!name)return;
+    const online=/線上/.test(r[7]||'');
+    if(/品牌月/.test(name)){items.push([d,'品牌月','線上']);stats.brand++;return}
+    if(/篝火/.test(name))stats.camp++;
+    if(!online)stats.phys++;
+    const where=online?'線上':(r[6]||'');
+    items.push([d,name,/通知|待定|^$/.test(where)?'':where]);
+  });
+  EXTRA.forEach(e=>items.push(e));
+  return items.sort((a,b)=>a[0]<b[0]?-1:a[0]>b[0]?1:0).map(([d,n,s])=>[d.slice(5).replace('-','/'),n,s]);
+}
+function renderSteps(list){
+  track.innerHTML=list.map((s,i)=>`<li><label class="step" for="st${i}"><time>${s[0]}</time><span><strong>${esc(s[1])}</strong>${s[2]?`<small>${esc(s[2])}</small>`:''}</span><input type="checkbox" id="st${i}"><span class="box" aria-hidden="true">✦</span></label></li>`).join('')
+   +`<li><label class="step locked" for="stLast"><time>全年</time><span><strong>會員群組</strong></span><input type="checkbox" id="stLast" checked disabled><span class="box" aria-hidden="true">✦</span></label></li>`;
+  update();
+}
+fetch(SHEET_CSV).then(r=>{if(!r.ok)throw 0;return r.text()}).then(t=>{
+  const list=sheetSteps(t);
+  if(list.length<=EXTRA.length)return;
+  if(starCount()<=1)renderSteps(list);
+  [['stPhys','phys'],['stBrand','brand'],['stCamp','camp']].forEach(([id,k])=>{const el=document.getElementById(id);if(el&&stats[k])el.textContent=stats[k]});
+}).catch(()=>{});
 function closeGift(){gift.hidden=true}
 gift.addEventListener('click',e=>{if(e.target===gift||e.target.closest('.g-close'))closeGift()});
 addEventListener('keydown',e=>{if(e.key==='Escape'&&!gift.hidden)closeGift()});
