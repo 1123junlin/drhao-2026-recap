@@ -310,6 +310,10 @@ footer{font-size:14px;color:var(--soft)}
 .moments{display:flex;flex-wrap:wrap;justify-content:center;gap:32px 20px}
 .moment{flex:0 0 calc((100% - 60px)/4)}
 @media(max-width:640px){.moments{gap:24px 12px}.moment{flex-basis:calc((100% - 12px)/2)}.moment:last-child{grid-column:auto}.moment:last-child .m-photo{aspect-ratio:4/3}}
+#recap{padding-block:clamp(40px,6vw,64px) 0}
+.recap-head{gap:18px}
+#aboutBtn{position:fixed;left:max(16px,env(safe-area-inset-left,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:25;display:flex;align-items:center;padding:12px 18px;background:linear-gradient(180deg,var(--glow),var(--gold));color:var(--night);font:700 15px/1 var(--sans);text-decoration:none;border-radius:999px;box-shadow:0 0 22px rgba(224,162,53,.35)}
+#aboutBtn:focus-visible{outline:2px solid var(--glow);outline-offset:3px}
 </style>
 </head>
 <body>
@@ -365,6 +369,11 @@ footer{font-size:14px;color:var(--soft)}
     </article>
   </div>
   <p class="n-more"><span>質感再提升</span><span>深化聚焦</span><span>多元斜槓</span></p>
+</div></section>
+
+<section class="band" id="recap" aria-labelledby="s-recap"><div class="wrap">
+  <div class="head center recap-head"><h2 id="s-recap">明年，<span class="gold">我們一起走過</span></h2>
+  <a class="btn" href="https://1123junlin.github.io/drchang.ent33/activities-v2.html" target="_blank" rel="noopener">查看近期活動</a></div>
 </div></section>
 
 <section class="band" aria-labelledby="s-summit"><div class="wrap">
@@ -540,6 +549,7 @@ AI 會說出你的名字嗎？
 <div id="gift" hidden role="dialog" aria-modal="true" aria-labelledby="gTitle"><div class="g-box" id="gBox"></div></div>
 <div id="lb" hidden role="dialog" aria-modal="true" aria-label="圖卡放大檢視"><button id="lbClose" type="button">關閉</button><button id="lbPrev" class="lb-nav" type="button" aria-label="上一張">‹</button><img id="lbImg" alt=""><button id="lbNext" class="lb-nav" type="button" aria-label="下一張">›</button><p id="lbInfo"></p></div>
 <audio id="bgm" src="assets/music.m4a" loop autoplay preload="auto"></audio>
+<a id="aboutBtn" href="https://1123junlin.github.io/drhao-landing/" target="_blank" rel="noopener">了解白院</a>
 <button id="music" type="button" aria-pressed="false" aria-label="播放背景音樂"><span class="ic" aria-hidden="true">▶</span><span class="tx">播放音樂</span></button>
 <footer class="band"><canvas class="ribbon" data-seed="9" style="top:0;height:100%" aria-hidden="true"></canvas><div class="wrap center" style="gap:14px;justify-items:center;text-align:center">
   <h2>一群人一起打拼<br><span class="gold">走得更遠</span></h2>
