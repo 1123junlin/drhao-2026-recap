@@ -314,6 +314,14 @@ footer{font-size:14px;color:var(--soft)}
 .recap-head{gap:18px}
 #aboutBtn{position:fixed;left:max(16px,env(safe-area-inset-left,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:25;display:flex;align-items:center;padding:12px 18px;background:linear-gradient(180deg,var(--glow),var(--gold));color:var(--night);font:700 15px/1 var(--sans);text-decoration:none;border-radius:999px;box-shadow:0 0 22px rgba(224,162,53,.35)}
 #aboutBtn:focus-visible{outline:2px solid var(--glow);outline-offset:3px}
+.how{display:grid;gap:16px;padding:20px;background:var(--glass);border:1px solid var(--hair);border-left:3px solid var(--gold);max-width:640px}
+.how-lead{font-size:17px;line-height:1.8;color:var(--coat)}
+.ladder{display:grid;gap:10px}
+.ladder li{display:grid;grid-template-columns:84px 1fr;gap:12px;align-items:baseline;padding-top:10px;border-top:1px solid rgba(251,249,243,.14)}
+.ladder b{font:600 16px/1.4 var(--num);color:var(--glow);white-space:nowrap}
+.ladder b::before{content:"✦ ";color:var(--gold)}
+.ladder span{font-size:16px;line-height:1.6;color:var(--coat)}
+.ladder small{font-size:14px;color:var(--soft)}
 </style>
 </head>
 <body>
@@ -337,7 +345,16 @@ footer{font-size:14px;color:var(--soft)}
 
 <main>
 <section class="band" id="yours" aria-labelledby="s-yours"><div class="wrap">
-  <div class="head"><p class="eyebrow">Your 2026</p><h2 id="s-yours">你的 2026，<br>點亮了哪幾顆星？</h2><p class="lede">勾起來看看。</p></div>
+  <div class="head"><p class="eyebrow">Your 2026</p><h2 id="s-yours">你的 2026，<br>點亮了哪幾顆星？</h2>
+  <div class="how">
+    <p class="how-lead">今年參加過哪些活動？<br>每參加過一場，就點亮一顆星<br>「會員群組」已為你點亮第一顆</p>
+    <ul class="ladder">
+      <li><b>5 顆星</b><span>可找白院特助領小禮物</span></li>
+      <li><b>10 顆星</b><span>線上經典課程<br>折價券 1000 元<small>（可轉贈）</small></span></li>
+      <li><b>15 顆星</b><span>線上經典課程<br>折價券 2000 元<small>（可轉贈）</small></span></li>
+    </ul>
+  </div>
+  <p class="lede">勾起來看看。</p></div>
   <ol class="track" id="track"></ol>
   <p class="tally" aria-live="polite">這一年，你點亮了 <b id="count">1</b> 顆星。</p>
 </div></section>
