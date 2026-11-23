@@ -703,13 +703,13 @@ const fifteenHead=`<p class="g-stars" aria-hidden="true">✦ ✦ ✦ ✦ ✦<br>
   <h3 id="gTitle">十五顆星，最閃亮的夥伴</h3>
   <p>謝謝你，一路相伴<br>你的熱情，照亮了整個白院</p>`;
 function fifteen(){
-  if(reg){
-    openGift(fifteenHead+`<p>我們已登記您的資料<br><strong>${esc(reg.name)}</strong>｜${esc(reg.email)}</p>`+giftHtml(2000));
-    send(reg.name,reg.email).catch(()=>{});
-  }else{
-    openGift(fifteenHead+`<p>留下姓名與信箱<br>領取課程折價券</p>`+formHtml('登記領取折價券'));
-    bindForm(()=>{gBox.querySelector('.g-form').outerHTML=`<p>已登記：<strong>${esc(reg.name)}</strong></p>`+giftHtml(2000)});
-  }
+  openGift(fifteenHead+`<div class="g-code"><span>贈送白袍人生學院 線上經典課程</span><b class="g-gift">折價券2000元</b>
+    <span>折扣碼</span><b id="gCode" class="g-coupon">gift2000</b>
+    <button class="g-copy" type="button" id="gCopy">複製折扣碼</button>
+    <span class="g-tip">可轉讓，期限到 12/31</span></div>
+  <p class="g-next">您已領取完所有好禮，<br>2027繼續有您！</p>`);
+  const b=document.getElementById('gCopy');
+  b.addEventListener('click',()=>{const t=document.getElementById('gCode');navigator.clipboard.writeText(t.textContent).then(()=>b.textContent='已複製').catch(()=>{const r=document.createRange();r.selectNodeContents(t);getSelection().removeAllRanges();getSelection().addRange(r)})});
 }
 track.addEventListener('change',e=>{const n=starCount();
   if(!e.target.checked)return;
