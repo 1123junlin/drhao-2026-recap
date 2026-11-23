@@ -327,6 +327,11 @@ footer{font-size:14px;color:var(--soft)}
 .g-coupon{font:600 30px/1.2 var(--num)!important;letter-spacing:.12em;color:var(--glow)}
 .g-copy{justify-self:center}
 .g-tip{font-size:15px!important;color:var(--coat)!important;margin-top:4px}
+.n-posters{display:grid;grid-template-columns:3fr 1fr;gap:12px;align-items:end}
+.n-posters .moment{cursor:zoom-in}
+.n-posters img{width:100%;height:auto;border:1px solid var(--hair)}
+.n-p2 span{display:block;font-size:14px;line-height:1.4;color:var(--soft);margin-top:6px;text-align:center}
+@media(max-width:800px){.n-posters{max-width:520px;justify-self:center;width:100%}}
 </style>
 </head>
 <body>
@@ -363,7 +368,10 @@ footer{font-size:14px;color:var(--soft)}
   <div class="head center"><p class="eyebrow">2027</p><h2 id="s-next">明年，<br>我們要去<span class="gold">更遠的地方</span></h2><p class="orn" style="width:100%">◆</p></div>
   <div class="next3">
     <article class="n-card n-talk">
-      <button class="zoom" type="button" data-full="assets/late-night-2027.jpg" aria-label="放大 2027 深夜十談圖卡"><img src="assets/late-night-2027.jpg" loading="lazy" alt="深夜十談第 21 至 26 談圖卡"></button>
+      <div class="n-posters">
+        <button class="moment n-p1" type="button" data-photos='["assets/late-night-21.jpg","assets/late-night-2027.jpg"]' data-name="深夜十談" aria-label="查看深夜十談第 21 談圖卡"><img src="assets/late-night-21.jpg" loading="lazy" alt="深夜十談第 21 談圖卡：李宜靜中醫師 × 張益豪醫師"></button>
+        <button class="moment n-p2" type="button" data-photos='["assets/late-night-2027.jpg","assets/late-night-21.jpg"]' data-name="深夜十談" aria-label="查看深夜十談第 21 至 26 談總覽"><img src="assets/late-night-2027.jpg" loading="lazy" alt="深夜十談第 21 至 26 談圖卡"><span>第 21–26 談總覽</span></button>
+      </div>
       <div class="n-body">
         <p class="eyebrow">2026.12 – 2027.05</p>
         <h3>深夜十談<br><span class="gold">再度啟航</span></h3>
