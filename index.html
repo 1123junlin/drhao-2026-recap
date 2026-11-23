@@ -324,6 +324,9 @@ footer{font-size:14px;color:var(--soft)}
 .ladder small{font-size:14px;color:var(--soft)}
 .g-dl{justify-self:center;margin-top:8px;font-size:16px}
 .g-next{font:700 19px/1.5 var(--serif)!important;color:var(--glow)!important;text-shadow:0 0 14px rgba(224,162,53,.45)}
+.g-coupon{font:600 30px/1.2 var(--num)!important;letter-spacing:.12em;color:var(--glow)}
+.g-copy{justify-self:center}
+.g-tip{font-size:15px!important;color:var(--coat)!important;margin-top:4px}
 </style>
 </head>
 <body>
@@ -687,14 +690,14 @@ function giftHtml(amt){return `<div class="g-code"><span>贈送白袍人生學�
 const tenHead=`<p class="g-stars" aria-hidden="true">✦ ✦ ✦ ✦ ✦<br>✦ ✦ ✦ ✦ ✦</p>
   <h3 id="gTitle">十顆星，閃耀一整年</h3>
   <p>謝謝你，一整年都在現場<br>每一次出席、每一次提問<br>都讓白院走得更遠</p>`;
-async function ten(){
-  if(reg){
-    openGift(tenHead+`<p>我們已登記您的資料<br><strong>${esc(reg.name)}</strong>｜${esc(reg.email)}</p>`+giftHtml(1000));
-    send(reg.name,reg.email).catch(()=>{});
-  }else{
-    openGift(tenHead+`<p>留下姓名與信箱<br>領取課程折價券</p>`+formHtml('登記領取折價券'));
-    bindForm(()=>{gBox.querySelector('.g-form').outerHTML=`<p>已登記：<strong>${esc(reg.name)}</strong></p>`+giftHtml(1000)});
-  }
+function ten(){
+  openGift(tenHead+`<div class="g-code"><span>贈送白袍人生學院 線上經典課程</span><b class="g-gift">折價券1000元</b>
+    <span>折扣碼</span><b id="gCode" class="g-coupon">gift1000</b>
+    <button class="g-copy" type="button" id="gCopy">複製折扣碼</button>
+    <span class="g-tip">小小提醒：可轉讓，期限到 12/31</span></div>
+  <p class="g-next">繼續點亮，<br>15顆星有超級好禮給您！</p>`);
+  const b=document.getElementById('gCopy');
+  b.addEventListener('click',()=>{const t=document.getElementById('gCode');navigator.clipboard.writeText(t.textContent).then(()=>b.textContent='已複製').catch(()=>{const r=document.createRange();r.selectNodeContents(t);getSelection().removeAllRanges();getSelection().addRange(r)})});
 }
 const fifteenHead=`<p class="g-stars" aria-hidden="true">✦ ✦ ✦ ✦ ✦<br>✦ ✦ ✦ ✦ ✦<br>✦ ✦ ✦ ✦ ✦</p>
   <h3 id="gTitle">十五顆星，最閃亮的夥伴</h3>
