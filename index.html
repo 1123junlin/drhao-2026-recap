@@ -694,7 +694,7 @@ function ten(){
   openGift(tenHead+`<div class="g-code"><span>贈送白袍人生學院 線上經典課程</span><b class="g-gift">折價券1000元</b>
     <span>折扣碼</span><b id="gCode" class="g-coupon">gift1000</b>
     <button class="g-copy" type="button" id="gCopy">複製折扣碼</button>
-    <span class="g-tip">小小提醒：可轉讓，期限到 12/31</span></div>
+    <span class="g-tip">可轉讓，期限到 12/31</span></div>
   <p class="g-next">繼續點亮，<br>15顆星有超級好禮給您！</p>`);
   const b=document.getElementById('gCopy');
   b.addEventListener('click',()=>{const t=document.getElementById('gCode');navigator.clipboard.writeText(t.textContent).then(()=>b.textContent='已複製').catch(()=>{const r=document.createRange();r.selectNodeContents(t);getSelection().removeAllRanges();getSelection().addRange(r)})});
