@@ -322,6 +322,8 @@ footer{font-size:14px;color:var(--soft)}
 .ladder b::before{content:"✦ ";color:var(--gold)}
 .ladder span{font-size:16px;line-height:1.6;color:var(--coat)}
 .ladder small{font-size:14px;color:var(--soft)}
+.g-dl{justify-self:center;margin-top:8px;font-size:16px}
+.g-next{font:700 19px/1.5 var(--serif)!important;color:var(--glow)!important;text-shadow:0 0 14px rgba(224,162,53,.45)}
 </style>
 </head>
 <body>
@@ -675,9 +677,10 @@ function bindForm(onDone){
 function five(){
   openGift(`<p class="g-stars" aria-hidden="true">✦ ✦ ✦ ✦ ✦</p>
   <h3 id="gTitle">點亮 5 顆星</h3>
-  <p>感謝您積極參與白袍人生學院活動<br>2026 謝謝有您一起參與<br>請輸入姓名、信箱</p>
-  <div class="g-code"><b class="g-gift">可找白院特助<br>領小禮物</b></div>`+formHtml('登記'));
-  bindForm(()=>{gBox.querySelector('.g-form').outerHTML=`<p><strong>${esc(reg.name)}</strong>，已為您完成登記<br>2027 我們一起繼續前行</p><p class="g-note">繼續點亮，還有驚喜</p>`});
+  <p>感謝您積極參與白袍人生學院活動<br>2026 謝謝有您一起參與</p>
+  <div class="g-code"><b class="g-gift">贈送白袍人生學院<br>菁英會員專訪</b>
+    <a class="btn g-dl" href="https://drive.google.com/drive/folders/1iTtHS3Fl9mTuvLJmGBxPK2ncxQFGGu1V?usp=sharing" target="_blank" rel="noopener">點我下載</a></div>
+  <p class="g-next">繼續點亮，10顆星有超值好禮</p>`);
 }
 function giftHtml(amt){return `<div class="g-code"><span>贈送白袍人生學院 線上經典課程</span><b class="g-gift">折價券${amt}元</b><span>(可轉贈)</span></div>
   <p class="g-note">領取方式將另行通知您</p>`}
