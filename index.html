@@ -377,7 +377,7 @@ footer{font-size:14px;color:var(--soft)}
   </div>
   <p class="lede">勾起來看看。</p></div>
   <ol class="track" id="track"></ol>
-  <p class="tally"><span aria-live="polite">這一年，你點亮了 <b id="count">1</b> 顆星。</span><button type="button" id="cardBtn" class="card-btn">下載感謝卡</button></p>
+  <p class="tally"><span aria-live="polite">這一年，你點亮了 <b id="count">1</b> 顆星。</span><button type="button" id="cardBtn" class="card-btn">下載小卡</button></p>
 </div></section>
 
 <section class="band" id="next" aria-labelledby="s-next"><div class="wrap">
@@ -597,10 +597,10 @@ AI 會說出你的名字嗎？
 
 <div id="cardDlg" hidden role="dialog" aria-modal="true" aria-labelledby="cdTitle"><div class="cd-box">
   <button class="g-close" type="button" id="cdClose" aria-label="關閉">×</button>
-  <h3 id="cdTitle">下載你的 2026 感謝卡</h3>
-  <div class="cd-form"><label for="cdName">輸入你的姓名</label><input id="cdName" maxlength="12" autocomplete="name" placeholder="例如：王小明"><button class="btn" type="button" id="cdMake">產生感謝卡</button></div>
-  <p class="cd-hint" id="cdHint" hidden>長按圖片，選擇「儲存圖片」即可下載</p>
-  <img id="cdImg" alt="你的 2026 感謝卡" hidden>
+  <h3 id="cdTitle">你的 2026 小卡</h3>
+  <div class="cd-form"><label for="cdName">想加上姓名？輸入後小卡會自動更新</label><input id="cdName" maxlength="12" autocomplete="name" placeholder="例如：王小明"></div>
+  <p class="cd-hint" id="cdHint">長按圖片，選擇「儲存圖片」即可下載</p>
+  <img id="cdImg" alt="你的 2026 小卡">
 </div></div>
 <div id="gift" hidden role="dialog" aria-modal="true" aria-labelledby="gTitle"><div class="g-box" id="gBox"></div></div>
 <div id="lb" hidden role="dialog" aria-modal="true" aria-label="圖卡放大檢視"><button id="lbClose" type="button">關閉</button><button id="lbPrev" class="lb-nav" type="button" aria-label="上一張">‹</button><img id="lbImg" alt=""><button id="lbNext" class="lb-nav" type="button" aria-label="下一張">›</button><p id="lbInfo"></p></div>
@@ -643,7 +643,7 @@ track.addEventListener('change',update);
 // ── 感謝卡 ──
 const cardDlg=document.getElementById('cardDlg'),cdName=document.getElementById('cdName'),cdImg=document.getElementById('cdImg'),cdHint=document.getElementById('cdHint');
 const loadImg=src=>new Promise((ok,no)=>{const i=new Image();i.onload=()=>ok(i);i.onerror=no;i.src=src});
-document.getElementById('cardBtn').addEventListener('click',()=>{cardDlg.hidden=false;cdName.focus()});
+document.getElementById('cardBtn').addEventListener('click',()=>{cardDlg.hidden=false;renderCard()});
 document.getElementById('cdClose').addEventListener('click',()=>cardDlg.hidden=true);
 cardDlg.addEventListener('click',e=>{if(e.target===cardDlg)cardDlg.hidden=true});
 function fitText(x,t,w){if(x.measureText(t).width<=w)return t;while(t.length>2&&x.measureText(t+'…').width>w)t=t.slice(0,-1);return t+'…'}
@@ -684,12 +684,11 @@ async function drawCard(name){
   x.fillStyle='#E0A235';x.font='500 24px "Noto Sans TC"';x.fillText('白袍人生學院2026感謝有你｜2027繼續同行',R,H-68);
   return c;
 }
-document.getElementById('cdMake').addEventListener('click',async()=>{
-  const name=cdName.value.trim();if(!name){cdName.focus();cdName.placeholder='請先輸入姓名';return}
-  let url;try{url=(await drawCard(name)).toDataURL('image/png')}catch(e){cdHint.hidden=false;cdHint.textContent='感謝卡產生失敗，請重新整理後再試一次';return}
-  cdHint.textContent='長按圖片，選擇「儲存圖片」即可下載';
-  cdImg.src=url;cdImg.hidden=false;cdHint.hidden=false;cdImg.scrollIntoView({block:'nearest'});
-});
+let cdTimer,cdJob=0;
+async function renderCard(){const job=++cdJob;const name=cdName.value.trim()||'親愛的夥伴';
+  try{const url=(await drawCard(name)).toDataURL('image/png');if(job===cdJob)cdImg.src=url}
+  catch(e){cdHint.textContent='小卡產生失敗，請重新整理後再試一次'}}
+cdName.addEventListener('input',()=>{clearTimeout(cdTimer);cdTimer=setTimeout(renderCard,350)});
 
 const ENDPOINT='https://script.google.com/macros/s/AKfycbxx2MAlQiCdHvGG_9F0ftIoGCmOQi54mVUFeL6o_p4LR6B5VqYlWmwy4SGNXTx_zl0-PQ/exec';
 const gift=document.getElementById('gift'),gBox=document.getElementById('gBox');
