@@ -664,7 +664,7 @@ async function drawCard(name){
   }
   x.font='500 32px "Noto Sans TC"';x.fillStyle='rgba(251,249,243,.88)';x.fillText('謝謝你，這一年一起走過',L,y+62);
   const LX=440,LW=R-LX,top=y+(n>10?130:170),bottom=H-185;let ly=top;
-  x.fillStyle='#E0A235';x.font='500 28px "Noto Sans TC"';x.fillText(n>10?'你參加的活動':'你點亮的星星',LX,ly);ly+=18;
+  x.fillStyle='#E0A235';x.font='500 28px "Noto Sans TC"';x.fillText(n>10?'你參加的活動':'2026參加了',LX,ly);ly+=18;
   x.strokeStyle='rgba(224,162,53,.55)';x.lineWidth=1.5;x.beginPath();x.moveTo(LX,ly);x.lineTo(R,ly);x.stroke();ly+=22;
   // 少量：大字、寬行距；大量：逐步縮小，最小 22px 以保手機可讀
   // 10 項以下：大字、長名稱換行完整呈現；超過 10 項：單行、逐步縮小（最小 22px）
@@ -678,7 +678,7 @@ async function drawCard(name){
   lines.forEach(ls=>{x.fillStyle='#E0A235';x.fillText('✦',LX,ly);x.fillStyle='#FBF9F3';
     ls.forEach((l,k)=>{x.fillText(l,LX+fs*1.3,ly);ly+=fs*1.3});ly+=fs*(n<=4?0.9:n<=10?0.55:0.2)});
   x.textAlign='right';x.fillStyle='rgba(251,249,243,.9)';x.font='700 34px "Noto Serif TC"';x.fillText('一群人一起打拼　走得更遠',R,H-112);
-  x.fillStyle='#E0A235';x.font='500 24px "Noto Sans TC"';x.fillText('白袍人生學院2026感謝有你',R,H-68);
+  x.fillStyle='#E0A235';x.font='500 24px "Noto Sans TC"';x.fillText('白袍人生學院2026感謝有你｜2027繼續同行',R,H-68);
   return c;
 }
 document.getElementById('cdMake').addEventListener('click',async()=>{
