@@ -664,6 +664,15 @@ async function drawCard(name){
     x.fillStyle='#F6DDA6';x.shadowColor='rgba(224,162,53,.75)';x.shadowBlur=22;x.fillText('屬於您 2026 的星星',L,y+62);x.shadowBlur=0;y+=62;
   }
   x.font='500 32px "Noto Sans TC"';x.fillStyle='rgba(251,249,243,.88)';x.fillText('謝謝你，這一年一起走過',L,y+62);
+  if(n<=4){
+    // 4 顆以下：不列清單，改畫星座（點亮幾顆亮幾顆）
+    const star=(cx,cy,r)=>{x.save();x.fillStyle='#F6DDA6';x.shadowColor='rgba(224,162,53,.9)';x.shadowBlur=30;x.beginPath();for(let i=0;i<8;i++){const t=i*Math.PI/4-Math.PI/2,l=i%2?r*.18:r;x.lineTo(cx+Math.cos(t)*l,cy+Math.sin(t)*l)}x.closePath();x.fill();x.restore()};
+    const pts=[[640,y+230],[760,y+170],[880,y+250],[820,y+370],[700,y+360]];
+    x.strokeStyle='rgba(246,221,166,.35)';x.lineWidth=2;x.setLineDash([6,8]);x.beginPath();pts.forEach((p,i)=>i?x.lineTo(p[0],p[1]):x.moveTo(p[0],p[1]));x.closePath();x.stroke();x.setLineDash([]);
+    pts.forEach((p,i)=>{if(i<n)star(p[0],p[1],34);else{x.fillStyle='rgba(251,249,243,.35)';x.beginPath();x.arc(p[0],p[1],7,0,7);x.fill()}});
+    x.textAlign='right';x.font='700 40px "Noto Serif TC"';x.fillStyle='#FBF9F3';x.fillText('您的星星，才剛開始發光',R,y+510);
+    x.fillStyle='#F6DDA6';x.shadowColor='rgba(224,162,53,.7)';x.shadowBlur=18;x.font='900 46px "Noto Serif TC"';x.fillText('2027，一起點亮更多',R,y+575);x.shadowBlur=0;x.textAlign='left';
+  }else{
   const LX=440,LW=R-LX,top=y+(n>10?130:170),bottom=H-185;let ly=top;
   x.fillStyle='#E0A235';x.font='500 28px "Noto Sans TC"';x.fillText(n>10?'你參加的活動':'你點亮的星星',LX,ly);ly+=18;
   x.strokeStyle='rgba(224,162,53,.55)';x.lineWidth=1.5;x.beginPath();x.moveTo(LX,ly);x.lineTo(R,ly);x.stroke();ly+=22;
@@ -678,6 +687,7 @@ async function drawCard(name){
   ly+=fs;
   lines.forEach(ls=>{x.fillStyle='#E0A235';x.fillText('✦',LX,ly);x.fillStyle='#FBF9F3';
     ls.forEach((l,k)=>{x.fillText(l,LX+fs*1.3,ly);ly+=fs*1.3});ly+=fs*(n<=4?0.9:n<=10?0.55:0.2)});
+  }
   x.textAlign='right';x.fillStyle='rgba(251,249,243,.9)';x.font='700 34px "Noto Serif TC"';x.fillText('一群人一起打拼　走得更遠',R,H-112);
   x.fillStyle='#E0A235';x.font='500 24px "Noto Sans TC"';x.fillText('白袍人生學院 2026 感謝祭｜2027 繼續同行',R,H-68);
   return c;
