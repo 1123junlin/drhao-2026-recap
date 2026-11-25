@@ -344,7 +344,7 @@ footer{font-size:14px;color:var(--soft)}
 .cd-form input{width:100%;padding:12px 14px;font:400 17px/1.4 var(--sans);color:var(--coat);background:rgba(7,20,38,.7);border:1px solid rgba(251,249,243,.25)}
 .cd-form .btn{border:0;cursor:pointer;font-size:16px}
 .cd-hint{font:400 14px/1.5 var(--sans);color:var(--coat);margin-top:-4px}
-#cdImg{width:100%;height:auto;border:1px solid var(--hair);-webkit-touch-callout:default}
+#cdImg{width:100%;height:auto;aspect-ratio:1055/1491;background:var(--night);border:1px solid var(--hair);-webkit-touch-callout:default}
 .tally{flex-wrap:nowrap;align-items:center}
 .tally>span{white-space:nowrap;min-width:0}
 @media(max-width:640px){.tally{padding:12px 12px;gap:8px;font-size:15px}.tally b{font-size:30px}.card-btn{padding:9px 10px;font-size:14px}}
@@ -643,7 +643,10 @@ track.addEventListener('change',update);
 // ── 感謝卡 ──
 const cardDlg=document.getElementById('cardDlg'),cdName=document.getElementById('cdName'),cdImg=document.getElementById('cdImg'),cdHint=document.getElementById('cdHint');
 const loadImg=src=>new Promise((ok,no)=>{const i=new Image();i.onload=()=>ok(i);i.onerror=no;i.src=src});
-document.getElementById('cardBtn').addEventListener('click',()=>{cardDlg.hidden=false;renderCard()});
+document.getElementById('cardBtn').addEventListener('click',async e=>{const btn=e.currentTarget;if(btn.disabled)return;
+  const t=btn.textContent;btn.disabled=true;btn.textContent='產生中…';
+  await renderCard();await (cdImg.decode?cdImg.decode().catch(()=>{}):0);
+  btn.disabled=false;btn.textContent=t;cardDlg.hidden=false;cardDlg.querySelector('.cd-box').scrollTop=0});
 document.getElementById('cdClose').addEventListener('click',()=>cardDlg.hidden=true);
 cardDlg.addEventListener('click',e=>{if(e.target===cardDlg)cardDlg.hidden=true});
 function fitText(x,t,w){if(x.measureText(t).width<=w)return t;while(t.length>2&&x.measureText(t+'…').width>w)t=t.slice(0,-1);return t+'…'}
