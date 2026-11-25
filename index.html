@@ -671,7 +671,12 @@ async function drawCard(name){
   x.strokeStyle='rgba(224,162,53,.55)';x.lineWidth=1.5;x.beginPath();x.moveTo(LX,ly);x.lineTo(R,ly);x.stroke();ly+=22;
   // 少量：大字、寬行距；大量：逐步縮小，最小 22px 以保手機可讀
   // 10 項以下：大字、長名稱換行完整呈現；超過 10 項：單行、逐步縮小（最小 22px）
-  const wrap=(t,w)=>{const out=[];let cur='';for(const ch of t){if(x.measureText(cur+ch).width>w&&cur){out.push(cur);cur=ch}else cur+=ch}if(cur)out.push(cur);return out};
+  // 換行時優先在「・｜：】」與空白等處斷開，避免把短詞拆成兩半
+  const BRK=' ・｜|：:】」，、）)';
+  const wrap=(t,w)=>{const out=[];let cur='';for(const ch of t){if(x.measureText(cur+ch).width>w&&cur){
+      let k=-1;for(let i=cur.length-1;i>=2;i--){if(BRK.includes(cur[i])){k=i;break}}
+      if(k>0&&cur.length-k-1<=8){out.push(cur.slice(0,k+1).trimEnd());cur=cur.slice(k+1).trimStart()+ch}else{out.push(cur);cur=ch}
+    }else cur+=ch}if(cur)out.push(cur);return out};
   let fs=n<=4?40:n<=10?34:32,lines;
   const layout=()=>{x.font=`500 ${fs}px "Noto Sans TC"`;const w=LW-fs*1.3;
     lines=items.map(it=>n<=10?wrap(it,w).slice(0,2).map((l,k,a)=>k===1&&wrap(it,w).length>2?fitText(x,l+'…',w):l):[fitText(x,it,w)]);
