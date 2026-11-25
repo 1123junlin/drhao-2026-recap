@@ -679,9 +679,9 @@ async function drawCard(name){
     }else cur+=ch}if(cur)out.push(cur);return out};
   let fs=n<=4?40:n<=10?34:32,lines;
   const layout=()=>{x.font=`500 ${fs}px "Noto Sans TC"`;const w=LW-fs*1.3;
-    lines=items.map(it=>n<=10?wrap(it,w).slice(0,2).map((l,k,a)=>k===1&&wrap(it,w).length>2?fitText(x,l+'…',w):l):[fitText(x,it,w)]);
+    lines=items.map(it=>wrap(it,w));
     return lines.reduce((h,ls)=>h+ls.length*fs*1.3+fs*(n<=4?0.9:n<=10?0.55:0.2),0)};
-  while(fs>22&&layout()>bottom-ly)fs-=1;
+  while(fs>16&&layout()>bottom-ly)fs-=1;
   ly+=fs;
   lines.forEach(ls=>{x.fillStyle='#E0A235';x.fillText('✦',LX,ly);x.fillStyle='#FBF9F3';
     ls.forEach((l,k)=>{x.fillText(l,LX+fs*1.3,ly);ly+=fs*1.3});ly+=fs*(n<=4?0.9:n<=10?0.55:0.2)});
