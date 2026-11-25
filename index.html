@@ -343,7 +343,7 @@ footer{font-size:14px;color:var(--soft)}
 .cd-form label{font-size:15px;color:var(--soft)}
 .cd-form input{width:100%;padding:12px 14px;font:400 17px/1.4 var(--sans);color:var(--coat);background:rgba(7,20,38,.7);border:1px solid rgba(251,249,243,.25)}
 .cd-form .btn{border:0;cursor:pointer;font-size:16px}
-.cd-hint{font:700 17px/1.5 var(--sans);color:var(--glow);padding:10px 12px;border:1px dashed var(--gold);width:100%}
+.cd-hint{font:400 14px/1.5 var(--sans);color:var(--coat);margin-top:-4px}
 #cdImg{width:100%;height:auto;border:1px solid var(--hair);-webkit-touch-callout:default}
 </style>
 </head>
@@ -596,9 +596,8 @@ AI 會說出你的名字嗎？
   <button class="g-close" type="button" id="cdClose" aria-label="關閉">×</button>
   <h3 id="cdTitle">下載你的 2026 感謝卡</h3>
   <div class="cd-form"><label for="cdName">輸入你的姓名</label><input id="cdName" maxlength="12" autocomplete="name" placeholder="例如：王小明"><button class="btn" type="button" id="cdMake">產生感謝卡</button></div>
-  <p class="cd-hint" id="cdHint" hidden>長按圖片，選擇「儲存圖片」<br>即可下載</p>
+  <p class="cd-hint" id="cdHint" hidden>長按圖片，選擇「儲存圖片」即可下載</p>
   <img id="cdImg" alt="你的 2026 感謝卡" hidden>
-  <a class="btn" id="cdSave" hidden download="白袍人生學院2026感謝卡.png">下載圖片</a>
 </div></div>
 <div id="gift" hidden role="dialog" aria-modal="true" aria-labelledby="gTitle"><div class="g-box" id="gBox"></div></div>
 <div id="lb" hidden role="dialog" aria-modal="true" aria-label="圖卡放大檢視"><button id="lbClose" type="button">關閉</button><button id="lbPrev" class="lb-nav" type="button" aria-label="上一張">‹</button><img id="lbImg" alt=""><button id="lbNext" class="lb-nav" type="button" aria-label="下一張">›</button><p id="lbInfo"></p></div>
@@ -639,7 +638,7 @@ track.innerHTML=STEPS.map((s,i)=>`<li><label class="step" for="st${i}"><time>${s
 const update=()=>{document.getElementById('count').textContent=track.querySelectorAll('input:checked').length};
 track.addEventListener('change',update);
 // ── 感謝卡 ──
-const cardDlg=document.getElementById('cardDlg'),cdName=document.getElementById('cdName'),cdImg=document.getElementById('cdImg'),cdSave=document.getElementById('cdSave'),cdHint=document.getElementById('cdHint');
+const cardDlg=document.getElementById('cardDlg'),cdName=document.getElementById('cdName'),cdImg=document.getElementById('cdImg'),cdHint=document.getElementById('cdHint');
 const loadImg=src=>new Promise((ok,no)=>{const i=new Image();i.onload=()=>ok(i);i.onerror=no;i.src=src});
 document.getElementById('cardBtn').addEventListener('click',()=>{cardDlg.hidden=false;cdName.focus()});
 document.getElementById('cdClose').addEventListener('click',()=>cardDlg.hidden=true);
@@ -660,19 +659,10 @@ async function drawCard(name){
     x.font='600 96px Montserrat';x.fillStyle='#F6DDA6';x.shadowColor='rgba(224,162,53,.75)';x.shadowBlur=26;x.fillText(String(n),cx,y+10);x.shadowBlur=0;cx+=x.measureText(String(n)+' ').width;
     x.font='900 44px "Noto Serif TC"';x.fillStyle='#FBF9F3';x.fillText('顆星',cx,y);
   }else{
-    x.font='900 44px "Noto Serif TC"';x.fillStyle='#FBF9F3';x.fillText('你點亮了',L,y);
-    x.fillStyle='#F6DDA6';x.shadowColor='rgba(224,162,53,.75)';x.shadowBlur=22;x.fillText('屬於您 2026 的星星',L,y+62);x.shadowBlur=0;y+=62;
+    x.font='900 44px "Noto Serif TC"';x.fillStyle='#FBF9F3';x.fillText('您點亮了',L,y);
+    x.fillStyle='#F6DDA6';x.shadowColor='rgba(224,162,53,.75)';x.shadowBlur=22;x.fillText('屬於您的星星',L,y+62);x.shadowBlur=0;y+=62;
   }
   x.font='500 32px "Noto Sans TC"';x.fillStyle='rgba(251,249,243,.88)';x.fillText('謝謝你，這一年一起走過',L,y+62);
-  if(n<=4){
-    // 4 顆以下：不列清單，改畫星座（點亮幾顆亮幾顆）
-    const star=(cx,cy,r)=>{x.save();x.fillStyle='#F6DDA6';x.shadowColor='rgba(224,162,53,.9)';x.shadowBlur=30;x.beginPath();for(let i=0;i<8;i++){const t=i*Math.PI/4-Math.PI/2,l=i%2?r*.18:r;x.lineTo(cx+Math.cos(t)*l,cy+Math.sin(t)*l)}x.closePath();x.fill();x.restore()};
-    const pts=[[640,y+230],[760,y+170],[880,y+250],[820,y+370],[700,y+360]];
-    x.strokeStyle='rgba(246,221,166,.35)';x.lineWidth=2;x.setLineDash([6,8]);x.beginPath();pts.forEach((p,i)=>i?x.lineTo(p[0],p[1]):x.moveTo(p[0],p[1]));x.closePath();x.stroke();x.setLineDash([]);
-    pts.forEach((p,i)=>{if(i<n)star(p[0],p[1],34);else{x.fillStyle='rgba(251,249,243,.35)';x.beginPath();x.arc(p[0],p[1],7,0,7);x.fill()}});
-    x.textAlign='right';x.font='700 40px "Noto Serif TC"';x.fillStyle='#FBF9F3';x.fillText('您的星星，才剛開始發光',R,y+510);
-    x.fillStyle='#F6DDA6';x.shadowColor='rgba(224,162,53,.7)';x.shadowBlur=18;x.font='900 46px "Noto Serif TC"';x.fillText('2027，一起點亮更多',R,y+575);x.shadowBlur=0;x.textAlign='left';
-  }else{
   const LX=440,LW=R-LX,top=y+(n>10?130:170),bottom=H-185;let ly=top;
   x.fillStyle='#E0A235';x.font='500 28px "Noto Sans TC"';x.fillText(n>10?'你參加的活動':'你點亮的星星',LX,ly);ly+=18;
   x.strokeStyle='rgba(224,162,53,.55)';x.lineWidth=1.5;x.beginPath();x.moveTo(LX,ly);x.lineTo(R,ly);x.stroke();ly+=22;
@@ -687,16 +677,15 @@ async function drawCard(name){
   ly+=fs;
   lines.forEach(ls=>{x.fillStyle='#E0A235';x.fillText('✦',LX,ly);x.fillStyle='#FBF9F3';
     ls.forEach((l,k)=>{x.fillText(l,LX+fs*1.3,ly);ly+=fs*1.3});ly+=fs*(n<=4?0.9:n<=10?0.55:0.2)});
-  }
   x.textAlign='right';x.fillStyle='rgba(251,249,243,.9)';x.font='700 34px "Noto Serif TC"';x.fillText('一群人一起打拼　走得更遠',R,H-112);
-  x.fillStyle='#E0A235';x.font='500 24px "Noto Sans TC"';x.fillText('白袍人生學院 2026 感謝祭｜2027 繼續同行',R,H-68);
+  x.fillStyle='#E0A235';x.font='500 24px "Noto Sans TC"';x.fillText('白袍人生學院2026感謝有您',R,H-68);
   return c;
 }
 document.getElementById('cdMake').addEventListener('click',async()=>{
   const name=cdName.value.trim();if(!name){cdName.focus();cdName.placeholder='請先輸入姓名';return}
   let url;try{url=(await drawCard(name)).toDataURL('image/png')}catch(e){cdHint.hidden=false;cdHint.textContent='感謝卡產生失敗，請重新整理後再試一次';return}
-  cdHint.innerHTML='長按圖片，選擇「儲存圖片」<br>即可下載';
-  cdImg.src=url;cdImg.hidden=false;cdHint.hidden=false;cdSave.href=url;cdSave.hidden=false;cdImg.scrollIntoView({block:'nearest'});
+  cdHint.textContent='長按圖片，選擇「儲存圖片」即可下載';
+  cdImg.src=url;cdImg.hidden=false;cdHint.hidden=false;cdImg.scrollIntoView({block:'nearest'});
 });
 
 const ENDPOINT='https://script.google.com/macros/s/AKfycbxx2MAlQiCdHvGG_9F0ftIoGCmOQi54mVUFeL6o_p4LR6B5VqYlWmwy4SGNXTx_zl0-PQ/exec';
