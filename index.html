@@ -334,6 +334,17 @@ footer{font-size:14px;color:var(--soft)}
 @media(max-width:800px){.n-posters{max-width:520px;justify-self:center;width:100%}}
 .n-course{display:grid;gap:14px;border-color:var(--gold)}
 .n-course h3{font-size:clamp(24px,3vw,30px);margin-top:6px}
+.card-btn{margin-left:auto;align-self:center;padding:9px 14px;background:linear-gradient(180deg,var(--glow),var(--gold));color:var(--night);border:0;font:700 15px/1 var(--sans);cursor:pointer;white-space:nowrap}
+.card-btn:focus-visible{outline:2px solid var(--glow);outline-offset:3px}
+#cardDlg{position:fixed;inset:0;z-index:40;display:grid;place-items:center;padding:calc(16px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(16px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:rgba(7,20,38,.9)}
+.cd-box{position:relative;width:min(460px,100%);max-height:100%;overflow:auto;background:var(--ink);border:1px solid var(--gold);padding:36px 22px 24px;display:grid;gap:14px;justify-items:center;text-align:center}
+.cd-box h3{font-size:24px}
+.cd-form{display:grid;gap:10px;width:100%;text-align:left}
+.cd-form label{font-size:15px;color:var(--soft)}
+.cd-form input{width:100%;padding:12px 14px;font:400 17px/1.4 var(--sans);color:var(--coat);background:rgba(7,20,38,.7);border:1px solid rgba(251,249,243,.25)}
+.cd-form .btn{border:0;cursor:pointer;font-size:16px}
+.cd-hint{font:700 17px/1.5 var(--sans);color:var(--glow);padding:10px 12px;border:1px dashed var(--gold);width:100%}
+#cdImg{width:100%;height:auto;border:1px solid var(--hair);-webkit-touch-callout:default}
 </style>
 </head>
 <body>
@@ -363,7 +374,7 @@ footer{font-size:14px;color:var(--soft)}
   </div>
   <p class="lede">勾起來看看。</p></div>
   <ol class="track" id="track"></ol>
-  <p class="tally" aria-live="polite">這一年，你點亮了 <b id="count">1</b> 顆星。</p>
+  <p class="tally"><span aria-live="polite">這一年，你點亮了 <b id="count">1</b> 顆星。</span><button type="button" id="cardBtn" class="card-btn">下載感謝卡</button></p>
 </div></section>
 
 <section class="band" id="next" aria-labelledby="s-next"><div class="wrap">
@@ -581,6 +592,14 @@ AI 會說出你的名字嗎？
 
 </main>
 
+<div id="cardDlg" hidden role="dialog" aria-modal="true" aria-labelledby="cdTitle"><div class="cd-box">
+  <button class="g-close" type="button" id="cdClose" aria-label="關閉">×</button>
+  <h3 id="cdTitle">下載你的 2026 感謝卡</h3>
+  <div class="cd-form"><label for="cdName">輸入你的姓名</label><input id="cdName" maxlength="12" autocomplete="name" placeholder="例如：王小明"><button class="btn" type="button" id="cdMake">產生感謝卡</button></div>
+  <p class="cd-hint" id="cdHint" hidden>長按圖片，選擇「儲存圖片」<br>即可下載</p>
+  <img id="cdImg" alt="你的 2026 感謝卡" hidden>
+  <a class="btn" id="cdSave" hidden download="白袍人生學院2026感謝卡.png">下載圖片</a>
+</div></div>
 <div id="gift" hidden role="dialog" aria-modal="true" aria-labelledby="gTitle"><div class="g-box" id="gBox"></div></div>
 <div id="lb" hidden role="dialog" aria-modal="true" aria-label="圖卡放大檢視"><button id="lbClose" type="button">關閉</button><button id="lbPrev" class="lb-nav" type="button" aria-label="上一張">‹</button><img id="lbImg" alt=""><button id="lbNext" class="lb-nav" type="button" aria-label="下一張">›</button><p id="lbInfo"></p></div>
 <audio id="bgm" src="assets/music.m4a" loop autoplay preload="auto"></audio>
@@ -619,6 +638,43 @@ track.innerHTML=STEPS.map((s,i)=>`<li><label class="step" for="st${i}"><time>${s
  +`<li><label class="step locked" for="stLast"><time>全年</time><span><strong>會員群組</strong></span><input type="checkbox" id="stLast" checked disabled><span class="box" aria-hidden="true">✦</span></label></li>`;
 const update=()=>{document.getElementById('count').textContent=track.querySelectorAll('input:checked').length};
 track.addEventListener('change',update);
+// ── 感謝卡 ──
+const cardDlg=document.getElementById('cardDlg'),cdName=document.getElementById('cdName'),cdImg=document.getElementById('cdImg'),cdSave=document.getElementById('cdSave'),cdHint=document.getElementById('cdHint');
+const loadImg=src=>new Promise((ok,no)=>{const i=new Image();i.onload=()=>ok(i);i.onerror=no;i.src=src});
+document.getElementById('cardBtn').addEventListener('click',()=>{cardDlg.hidden=false;cdName.focus()});
+document.getElementById('cdClose').addEventListener('click',()=>cardDlg.hidden=true);
+cardDlg.addEventListener('click',e=>{if(e.target===cardDlg)cardDlg.hidden=true});
+function fitText(x,t,w){if(x.measureText(t).width<=w)return t;while(t.length>2&&x.measureText(t+'…').width>w)t=t.slice(0,-1);return t+'…'}
+async function drawCard(name){
+  try{await Promise.all(['900 40px "Noto Serif TC"','700 30px "Noto Serif TC"','500 30px "Noto Sans TC"','600 40px Montserrat'].map(f=>document.fonts.load(f)))}catch(e){}
+  const bg=await loadImg('assets/card-bg.jpg');let logo=null;try{logo=await loadImg('assets/logo.png')}catch(e){}
+  const items=[...track.querySelectorAll('input:checked')].map(i=>{const l=i.closest('label');return l.querySelector('time').textContent+' '+l.querySelector('strong').textContent});
+  const n=items.length,W=1080,H=Math.round(W*bg.height/bg.width),c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d');
+  x.drawImage(bg,0,0,W,H);const L=80,R=W-70;
+  if(logo){const lw=120;x.drawImage(logo,W-80-lw,64,lw,lw*logo.height/logo.width)}
+  x.fillStyle='#E0A235';x.font='600 24px Montserrat';x.fillText('THANK YOU · 2026',L,110);
+  x.fillStyle='#FBF9F3';x.font='900 72px "Noto Serif TC"';x.fillText(fitText(x,name,W-L-240),L,210);
+  let y=310;x.font='900 44px "Noto Serif TC"';x.fillStyle='#FBF9F3';x.fillText('你點亮了',L,y);let cx=L+x.measureText('你點亮了 ').width;
+  x.font='600 96px Montserrat';x.fillStyle='#F6DDA6';x.shadowColor='rgba(224,162,53,.75)';x.shadowBlur=26;x.fillText(String(n),cx,y+10);x.shadowBlur=0;cx+=x.measureText(String(n)+' ').width;
+  x.font='900 44px "Noto Serif TC"';x.fillStyle='#FBF9F3';x.fillText('顆星',cx,y);
+  x.font='500 32px "Noto Sans TC"';x.fillStyle='rgba(251,249,243,.88)';x.fillText('謝謝你，這一年一起走過',L,y+62);
+  const LX=440,LW=R-LX,top=470,bottom=H-200;let ly=top;
+  x.fillStyle='#E0A235';x.font='500 28px "Noto Sans TC"';x.fillText('你參加的活動',LX,ly);ly+=18;
+  x.strokeStyle='rgba(224,162,53,.55)';x.lineWidth=1.5;x.beginPath();x.moveTo(LX,ly);x.lineTo(R,ly);x.stroke();ly+=20;
+  let fs=34;while(fs>20&&n*fs*1.6>bottom-ly)fs-=1;const lh=fs*1.6;ly+=fs;
+  x.font=`500 ${fs}px "Noto Sans TC"`;
+  items.forEach(it=>{x.fillStyle='#E0A235';x.fillText('✦',LX,ly);x.fillStyle='#FBF9F3';x.fillText(fitText(x,it,LW-fs*1.3),LX+fs*1.3,ly);ly+=lh});
+  x.textAlign='right';x.fillStyle='rgba(251,249,243,.9)';x.font='700 34px "Noto Serif TC"';x.fillText('一群人一起打拼　走得更遠',R,H-112);
+  x.fillStyle='#E0A235';x.font='500 24px "Noto Sans TC"';x.fillText('白袍人生學院 2026 感謝祭｜2027 繼續同行',R,H-68);
+  return c;
+}
+document.getElementById('cdMake').addEventListener('click',async()=>{
+  const name=cdName.value.trim();if(!name){cdName.focus();cdName.placeholder='請先輸入姓名';return}
+  let url;try{url=(await drawCard(name)).toDataURL('image/png')}catch(e){cdHint.hidden=false;cdHint.textContent='感謝卡產生失敗，請重新整理後再試一次';return}
+  cdHint.innerHTML='長按圖片，選擇「儲存圖片」<br>即可下載';
+  cdImg.src=url;cdImg.hidden=false;cdHint.hidden=false;cdSave.href=url;cdSave.hidden=false;cdImg.scrollIntoView({block:'nearest'});
+});
+
 const ENDPOINT='https://script.google.com/macros/s/AKfycbxx2MAlQiCdHvGG_9F0ftIoGCmOQi54mVUFeL6o_p4LR6B5VqYlWmwy4SGNXTx_zl0-PQ/exec';
 const gift=document.getElementById('gift'),gBox=document.getElementById('gBox');
 const store={get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
