@@ -660,7 +660,7 @@ async function drawCard(name){
   x.fillStyle='#E0A235';x.font='600 24px Montserrat';x.fillText('THANK YOU · 2026',L,110);
   x.fillStyle='#FBF9F3';x.font='900 72px "Noto Serif TC"';x.fillText(fitText(x,name,W-L-240),L,210);
   let y=310;
-  if(n>10){
+  if(true){
     x.font='900 44px "Noto Serif TC"';x.fillStyle='#FBF9F3';x.fillText('你點亮了',L,y);let cx=L+x.measureText('你點亮了 ').width;
     x.font='600 96px Montserrat';x.fillStyle='#F6DDA6';x.shadowColor='rgba(224,162,53,.75)';x.shadowBlur=26;x.fillText(String(n),cx,y+10);x.shadowBlur=0;cx+=x.measureText(String(n)+' ').width;
     x.font='900 44px "Noto Serif TC"';x.fillStyle='#FBF9F3';x.fillText('顆星',cx,y);
@@ -669,7 +669,7 @@ async function drawCard(name){
     x.fillStyle='#F6DDA6';x.shadowColor='rgba(224,162,53,.75)';x.shadowBlur=22;x.fillText('屬於你的星星',L,y+62);x.shadowBlur=0;y+=62;
   }
   x.font='500 32px "Noto Sans TC"';x.fillStyle='rgba(251,249,243,.88)';x.fillText('謝謝你，這一年一起走過',L,y+62);
-  const LX=440,LW=R-LX,top=y+(n>10?130:170),bottom=H-185;let ly=top;
+  const LX=440,LW=R-LX,top=y+130,bottom=H-185;let ly=top;
   x.fillStyle='#E0A235';x.font='500 28px "Noto Sans TC"';x.fillText('你參加了',LX,ly);ly+=18;
   x.strokeStyle='rgba(224,162,53,.55)';x.lineWidth=1.5;x.beginPath();x.moveTo(LX,ly);x.lineTo(R,ly);x.stroke();ly+=22;
   // 少量：大字、寬行距；大量：逐步縮小，最小 22px 以保手機可讀
