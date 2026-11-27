@@ -348,9 +348,11 @@ footer{font-size:14px;color:var(--soft)}
 .tally{flex-wrap:nowrap;align-items:center}
 .tally>span{white-space:nowrap;min-width:0}
 @media(max-width:640px){.tally{padding:12px 12px;gap:8px;font-size:15px}.tally b{font-size:30px}.card-btn{padding:9px 10px;font-size:14px}}
-.n-member{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:clamp(24px,4vw,48px);align-items:center;border-color:var(--gold);box-shadow:0 0 40px rgba(224,162,53,.18)}
+.n-member{display:grid;grid-template-columns:1fr;gap:clamp(20px,3vw,32px);justify-items:center;border-color:var(--gold);box-shadow:0 0 40px rgba(224,162,53,.18)}
 .n-member h3{font-size:clamp(30px,4.4vw,46px);line-height:1.25}
 @media(max-width:800px){.n-member{grid-template-columns:1fr}.n-member .n-body{order:-1}.n-member .n-posters{max-width:520px;justify-self:center;width:100%}}
+.n-member .n-body{order:-1;justify-items:center;text-align:center}
+.n-member .n-posters{max-width:640px;width:100%}
 </style>
 </head>
 <body>
